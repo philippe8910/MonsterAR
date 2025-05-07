@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 822b9025ef19144f49b5477a53b9b988, type: 3}
+  m_Name: Happy
+  m_EditorClassIdentifier: 
+  associatedEmotion: 0
+  imageTargetPrefab: {fileID: 524049913940675181, guid: 2d2cb942545c84106a0756897584aed1, type: 3}
+  monsterModel: {fileID: 0}

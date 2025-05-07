@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="original" size="300.000000 300.000000" />
+    <ImageTarget name="oep_a081628_586060_hd" size="300.000000 325.200012" />
+    <ImageTarget name="hm" size="250.000000 250.000000" />
+    <ImageTarget name="sm" size="250.000000 250.000000" />
+    <ImageTarget name="am" size="250.000000 250.000000" />
+    <ImageTarget name="hb" size="250.000000 250.000000" />
+    <ImageTarget name="sadd" size="250.000000 250.000000" />
+    <ImageTarget name="loud" size="250.000000 250.000000" />
+    <ImageTarget name="happy" size="250.000000 250.000000" />
+    <ImageTarget name="sad" size="250.000000 250.000000" />
+    <ImageTarget name="angre" size="250.000000 250.000000" />
+  </Tracking>
+</QCARConfig>

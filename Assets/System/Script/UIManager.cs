@@ -75,21 +75,21 @@ public class UIManager : MonoBehaviour
     {
         switch (bossIndex)
         {
-            case 0:
-                return "忽視魔!";
             case 1:
-                return "偏見魔!";
+                return "忽視魔!";
             case 2:
-                return "拒絕魔!";
+                return "偏見魔!";
             case 3:
-                return "羞恥魔!";
+                return "拒絕魔!";
             case 4:
-                return "壓迫魔!";
+                return "羞恥魔!";
             case 5:
-                return "無助魔!";
+                return "壓迫魔!";
             case 6:
-                return "背叛魔!";
+                return "無助魔!";
             case 7:
+                return "背叛魔!";
+            case 8:
                 return "孤單魔!";
             default:
                 return "未知魔!";

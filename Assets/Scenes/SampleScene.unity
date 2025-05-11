@@ -1896,6 +1896,11 @@ MonoBehaviour:
   m_Script: {fileID: -1631628248, guid: 8a9a760f95896c34689febc965510927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1304874163 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6579758883690832265, guid: 1f74347f14c24407dbc7ca03eaa0cdfd, type: 3}
+  m_PrefabInstance: {fileID: 8049960565295916495}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1304874164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1910,8 +1915,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 1304874161}
   mHiddenRoot: {fileID: 0}
-  mTargetName: original
-  mDatasetName: Vuforia/MonsterCard.xml
+  mTargetName: imgtest
+  mDatasetName: Vuforia/EmotionalDemons.xml
   mCastedBehaviour: {fileID: 1304874161}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}
@@ -2539,6 +2544,72 @@ RectTransform:
   m_AnchoredPosition: {x: -0.14956665, y: -0.00055269053}
   m_SizeDelta: {x: 820.308, y: 369.67}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &1934797274 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b64a96c7c0ef303479db4377fbfae2c9, type: 3}
+  m_PrefabInstance: {fileID: 1939727391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1939727391
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1304874163}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b64a96c7c0ef303479db4377fbfae2c9, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b64a96c7c0ef303479db4377fbfae2c9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b64a96c7c0ef303479db4377fbfae2c9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.152
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b64a96c7c0ef303479db4377fbfae2c9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.128
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b64a96c7c0ef303479db4377fbfae2c9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.53611577
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b64a96c7c0ef303479db4377fbfae2c9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.46275163
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b64a96c7c0ef303479db4377fbfae2c9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.52244395
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b64a96c7c0ef303479db4377fbfae2c9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.47486126
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b64a96c7c0ef303479db4377fbfae2c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b64a96c7c0ef303479db4377fbfae2c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -88.52
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b64a96c7c0ef303479db4377fbfae2c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -83.065
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b64a96c7c0ef303479db4377fbfae2c9, type: 3}
+      propertyPath: m_Name
+      value: A
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b64a96c7c0ef303479db4377fbfae2c9, type: 3}
 --- !u!1 &1972150593
 GameObject:
   m_ObjectHideFlags: 0
@@ -3044,6 +3115,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8118661330286950730, guid: 1f74347f14c24407dbc7ca03eaa0cdfd, type: 3}
+      propertyPath: mWidth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118661330286950730, guid: 1f74347f14c24407dbc7ca03eaa0cdfd, type: 3}
+      propertyPath: mHeight
+      value: 0.434349
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118661330286950730, guid: 1f74347f14c24407dbc7ca03eaa0cdfd, type: 3}
+      propertyPath: mPreview
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118661330286950730, guid: 1f74347f14c24407dbc7ca03eaa0cdfd, type: 3}
+      propertyPath: mAspectRatio
+      value: 0.434349
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118661330286950730, guid: 1f74347f14c24407dbc7ca03eaa0cdfd, type: 3}
+      propertyPath: mDataSetPath
+      value: Vuforia/EmotionalDemons.xml
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118661330286950730, guid: 1f74347f14c24407dbc7ca03eaa0cdfd, type: 3}
+      propertyPath: mTrackableName
+      value: imgtest
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118661330286950730, guid: 1f74347f14c24407dbc7ca03eaa0cdfd, type: 3}
+      propertyPath: mImageTargetType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9012026059190738173, guid: 1f74347f14c24407dbc7ca03eaa0cdfd, type: 3}
       propertyPath: mHiddenRoot
       value: 
@@ -3059,7 +3158,10 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 9012026059190738173, guid: 1f74347f14c24407dbc7ca03eaa0cdfd, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6579758883690832265, guid: 1f74347f14c24407dbc7ca03eaa0cdfd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1934797274}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3267869064530332396, guid: 1f74347f14c24407dbc7ca03eaa0cdfd, type: 3}
       insertIndex: -1

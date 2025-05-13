@@ -14,8 +14,14 @@ public class UIManager : MonoBehaviour
 
     [Header("Introduction Screen")]
     public RectTransform IntroductionScreen;
-    public Button IntroStartBtn; // 介紹畫面的開始按鈕
+    public Button IntroStartBtn;
     private Vector3 introScreenOriginalPos;
+
+    [Header("ChoseTarget Screen")]
+    public RectTransform ChoseTargetScreen;
+    public Button[] TargetBtn;
+    public Button GameStartBtn;
+    public Button RechoseBtn;
 
     void Start()
     {
@@ -67,11 +73,11 @@ public class UIManager : MonoBehaviour
                 0.5f
             ).SetEase(Ease.OutQuad);
         }
-
-        Debug.Log($"🚀 啟動遊戲，Boss為：{ BossName()}");
+        PlayerPrefs.SetInt("BossNumber",bossIndex);
+        Debug.Log($"啟動遊戲，Boss為：{ SetBossName()},代碼為{PlayerPrefs.GetInt("BossNumber")}");
     }
 
-    private string BossName()
+    private string SetBossName()
     {
         switch (bossIndex)
         {

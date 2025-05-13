@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
     [Header("ChoseTarget Screen")]
     public RectTransform ChoseTargetScreen;
     public Button[] TargetBtn;
+    public Sprite[] TargetDemon;
+    public Image theTargetImage;
     public Button GameStartBtn;
     public Button RechoseBtn;
 

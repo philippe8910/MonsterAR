@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 
 public class UIManager : MonoBehaviour
 {
@@ -19,11 +20,13 @@ public class UIManager : MonoBehaviour
 
     [Header("ChoseTarget Screen")]
     public RectTransform ChoseTargetScreen;
+    public GameObject[] ScreenObject;
     public Button[] TargetBtn;
     public Sprite[] TargetDemon;
     public Image theTargetImage;
     public Button GameStartBtn;
     public Button RechoseBtn;
+    public int targetIndex = -1;
 
     void Start()
     {
@@ -53,6 +56,22 @@ public class UIManager : MonoBehaviour
             }
         }
 
+        if (TargetBtn != null && TargetBtn.Length > 0)
+        {
+            for (int i = 0; i < TargetBtn.Length; i++)
+            {
+                int capturedIndex = i;
+
+                TargetBtn[i].onClick.RemoveAllListeners();
+
+                TargetBtn[i].onClick.AddListener(() =>
+                {
+                    targetIndex = ++capturedIndex;
+                    ChoseTargetDemons();
+                });
+            }
+        }
+
         if (QuitBtn != null)
         {
             QuitBtn.onClick.AddListener(QuitGame);
@@ -61,6 +80,16 @@ public class UIManager : MonoBehaviour
         if (IntroStartBtn != null)
         {
             IntroStartBtn.onClick.AddListener(StartIntroduction);
+        }
+
+        if (GameStartBtn != null)
+        {
+            GameStartBtn.onClick.AddListener(ConfirmationTargets);
+        }
+
+        if (RechoseBtn != null)
+        {
+            RechoseBtn.onClick.AddListener(ReChoseTarget);
         }
     }
 
@@ -76,12 +105,36 @@ public class UIManager : MonoBehaviour
             ).SetEase(Ease.OutQuad);
         }
         PlayerPrefs.SetInt("BossNumber",bossIndex);
-        Debug.Log($"啟動遊戲，Boss為：{ SetBossName()},代碼為{PlayerPrefs.GetInt("BossNumber")}");
+        Debug.Log($"啟動遊戲，Boss為：{ SetBossName(bossIndex)},代碼為{PlayerPrefs.GetInt("BossNumber")}");
     }
 
-    private string SetBossName()
+    private async void ChoseTargetDemons()
     {
-        switch (bossIndex)
+        FindObjectOfType<SceneTransition>().CallTransition();
+        await Task.Delay(1000);
+        ScreenObject[0].SetActive(false);
+        PlayerPrefs.SetInt("TargetNumber", targetIndex);
+        theTargetImage.sprite = TargetDemon[(PlayerPrefs.GetInt("TargetNumber") - 1)]; 
+        Debug.Log($"選擇目標為為：{SetBossName(targetIndex)},代碼為{PlayerPrefs.GetInt("TargetNumber")}");
+    }
+
+    private async void ReChoseTarget()
+    {
+        FindObjectOfType<SceneTransition>().CallTransition();
+        await Task.Delay(1000);
+        ScreenObject[0].SetActive(true);
+    }
+
+    private async void ConfirmationTargets()
+    {
+        FindObjectOfType<SceneTransition>().CallTransition();
+        await Task.Delay(1000);
+        ScreenObject[1].SetActive(false);
+    }
+
+    private string SetBossName(int checkIndex)
+    {
+        switch (checkIndex)
         {
             case 1:
                 return "忽視魔!";

@@ -832,7 +832,7 @@ GameObject:
   - component: {fileID: 334244769}
   - component: {fileID: 334244768}
   m_Layer: 5
-  m_Name: helpful_Button
+  m_Name: helpless_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1517,27 +1517,31 @@ MonoBehaviour:
   IntroductionScreen: {fileID: 1877842142}
   IntroStartBtn: {fileID: 1861884060}
   ChoseTargetScreen: {fileID: 631908647}
+  ScreenObject:
+  - {fileID: 646702970}
+  - {fileID: 1073994706}
   TargetBtn:
   - {fileID: 274584443}
-  - {fileID: 2101344317}
   - {fileID: 609040568}
-  - {fileID: 334244768}
   - {fileID: 1129700176}
   - {fileID: 2090121197}
   - {fileID: 1999116244}
+  - {fileID: 334244768}
   - {fileID: 1923369389}
+  - {fileID: 2101344317}
   TargetDemon:
   - {fileID: 21300000, guid: c7af50c045b6a8d4599f30555847537c, type: 3}
   - {fileID: 21300000, guid: 9617fa95459732e4ea7ce2e94ad13345, type: 3}
-  - {fileID: 21300000, guid: 965dbcc0bdeaa684ab245ea73c3bfe7f, type: 3}
-  - {fileID: 21300000, guid: 6e2a4f11232e09146b90ac59c59381c7, type: 3}
   - {fileID: 21300000, guid: 9922ee6eb36c30b41a1a024e482cd357, type: 3}
   - {fileID: 21300000, guid: 099d0e73044bf2143b9bc6f51b36e4fa, type: 3}
   - {fileID: 21300000, guid: 9bdd2c529c8126545931b20ef366c53a, type: 3}
+  - {fileID: 21300000, guid: 6e2a4f11232e09146b90ac59c59381c7, type: 3}
   - {fileID: 21300000, guid: 30c0f04c243fce34fb460f04e51c542a, type: 3}
+  - {fileID: 21300000, guid: 965dbcc0bdeaa684ab245ea73c3bfe7f, type: 3}
   theTargetImage: {fileID: 1135751883}
   GameStartBtn: {fileID: 1316019858}
   RechoseBtn: {fileID: 1317828768}
+  targetIndex: -1
 --- !u!1 &500460795
 GameObject:
   m_ObjectHideFlags: 0
@@ -2157,8 +2161,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.4397, y: 0.1891}
-  m_SizeDelta: {x: 97.8066, y: 25.9577}
+  m_AnchoredPosition: {x: -0.4397, y: -0.9684}
+  m_SizeDelta: {x: 97.8066, y: 26.1204}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &710433036
 MonoBehaviour:

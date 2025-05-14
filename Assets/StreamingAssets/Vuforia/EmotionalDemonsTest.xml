@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="r_scantest" size="1.000000 1.500000" />
+    <ImageTarget name="o_scantest" size="1.000000 1.500000" />
+    <ImageTarget name="a_scantest" size="1.000000 1.500000" />
+    <ImageTarget name="summonerarray" size="1.000000 0.999300" />
+  </Tracking>
+</QCARConfig>

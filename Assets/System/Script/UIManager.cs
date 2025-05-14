@@ -115,7 +115,7 @@ public class UIManager : MonoBehaviour
         ScreenObject[0].SetActive(false);
         PlayerPrefs.SetInt("TargetNumber", targetIndex);
         theTargetImage.sprite = TargetDemon[(PlayerPrefs.GetInt("TargetNumber") - 1)]; 
-        Debug.Log($"選擇目標為為：{SetBossName(targetIndex)},代碼為{PlayerPrefs.GetInt("TargetNumber")}");
+        Debug.Log($"選擇目標為：{SetBossName(targetIndex)},代碼為{PlayerPrefs.GetInt("TargetNumber")}");
     }
 
     private async void ReChoseTarget()

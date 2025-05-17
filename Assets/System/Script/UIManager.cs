@@ -6,6 +6,9 @@ using Unity.VisualScripting;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("SetUI")]
+    public Button[] HomeSetUI;
+
     [Header("Main Screen")]
     public RectTransform MainScreen;
     public Button[] StartBtn;
@@ -91,6 +94,8 @@ public class UIManager : MonoBehaviour
         {
             RechoseBtn.onClick.AddListener(ReChoseTarget);
         }
+
+        DisplayUbtton(false);
     }
 
     public async void StartGame()
@@ -106,6 +111,8 @@ public class UIManager : MonoBehaviour
         }
         PlayerPrefs.SetInt("BossNumber",bossIndex);
         Debug.Log($"啟動遊戲，Boss為：{ SetBossName(bossIndex)},代碼為{PlayerPrefs.GetInt("BossNumber")}");
+
+        
     }
 
     private async void ChoseTargetDemons()
@@ -172,9 +179,9 @@ public class UIManager : MonoBehaviour
         await Task.Delay(1000);
         if (IntroductionScreen != null)
         {
-            IntroductionScreen.DOAnchorPos(new Vector2(IntroductionScreen.anchoredPosition.x + 1000, IntroductionScreen.anchoredPosition.y), 0.5f)
-                .SetEase(Ease.OutQuad);
+            IntroductionScreen.DOAnchorPos(new Vector2(IntroductionScreen.anchoredPosition.x + 1000, IntroductionScreen.anchoredPosition.y), 0.5f).SetEase(Ease.OutQuad);
         }
+        DisplayUbtton(true);
     }
 
     public void ResetIntroductionScreen()
@@ -190,5 +197,13 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("退出遊戲");
         Application.Quit();
+    }
+
+    public void DisplayUbtton(bool isDisplay)
+    {
+        for (int i = 0; i < HomeSetUI.Length; i++)
+        {
+            HomeSetUI[i].gameObject.SetActive(isDisplay);
+        }
     }
 }

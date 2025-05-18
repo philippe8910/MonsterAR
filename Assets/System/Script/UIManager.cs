@@ -109,10 +109,10 @@ public class UIManager : MonoBehaviour
                 0.5f
             ).SetEase(Ease.OutQuad);
         }
-        PlayerPrefs.SetInt("BossNumber",bossIndex);
-        Debug.Log($"啟動遊戲，Boss為：{ SetBossName(bossIndex)},代碼為{PlayerPrefs.GetInt("BossNumber")}");
+        PlayerPrefs.SetInt("BossNumber", bossIndex);
+        Debug.Log($"啟動遊戲，Boss為：{SetBossName(bossIndex)},代碼為{PlayerPrefs.GetInt("BossNumber")}");
 
-        
+
     }
 
     private async void ChoseTargetDemons()
@@ -121,7 +121,7 @@ public class UIManager : MonoBehaviour
         await Task.Delay(1000);
         ScreenObject[0].SetActive(false);
         PlayerPrefs.SetInt("TargetNumber", targetIndex);
-        theTargetImage.sprite = TargetDemon[(PlayerPrefs.GetInt("TargetNumber") - 1)]; 
+        theTargetImage.sprite = TargetDemon[(PlayerPrefs.GetInt("TargetNumber") - 1)];
         Debug.Log($"選擇目標為：{SetBossName(targetIndex)},代碼為{PlayerPrefs.GetInt("TargetNumber")}");
     }
 
@@ -206,4 +206,6 @@ public class UIManager : MonoBehaviour
             HomeSetUI[i].gameObject.SetActive(isDisplay);
         }
     }
+
+    
 }

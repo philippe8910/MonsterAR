@@ -117,10 +117,6 @@ GameObject:
   - component: {fileID: 9147432815347125621}
   - component: {fileID: 3510251204362929592}
   - component: {fileID: 8574599398672959201}
-  - component: {fileID: 8886607052015950405}
-  - component: {fileID: 8233030480087529756}
-  - component: {fileID: 3796971387474474592}
-  - component: {fileID: 7946478525162737589}
   m_Layer: 0
   m_Name: SummonerArray
   m_TagString: Untagged
@@ -171,7 +167,7 @@ MonoBehaviour:
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 7946478525162737589}
+  mPreview: {fileID: 0}
 --- !u!114 &8574599398672959201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,82 +236,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8886607052015950405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3741526578738539630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mObserverBehaviour: {fileID: 3510251204362929592}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: summonerarray
-  mDatasetName: Vuforia/EmotionalDemonsTest.xml
-  mCastedBehaviour: {fileID: 3510251204362929592}
-  mMeshFilter: {fileID: 0}
-  mMeshRenderer: {fileID: 0}
---- !u!114 &8233030480087529756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3741526578738539630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mObserverBehaviour: {fileID: 3510251204362929592}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: summonerarray
-  mDatasetName: Vuforia/EmotionalDemonsTest.xml
-  mCastedBehaviour: {fileID: 3510251204362929592}
-  mMeshFilter: {fileID: 0}
-  mMeshRenderer: {fileID: 0}
---- !u!114 &3796971387474474592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3741526578738539630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mObserverBehaviour: {fileID: 3510251204362929592}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: summonerarray
-  mDatasetName: Vuforia/EmotionalDemonsTest.xml
-  mCastedBehaviour: {fileID: 3510251204362929592}
-  mMeshFilter: {fileID: 0}
-  mMeshRenderer: {fileID: 0}
---- !u!114 &7946478525162737589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3741526578738539630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mObserverBehaviour: {fileID: 3510251204362929592}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: summonerarray
-  mDatasetName: Vuforia/EmotionalDemonsTest.xml
-  mCastedBehaviour: {fileID: 3510251204362929592}
-  mMeshFilter: {fileID: 0}
-  mMeshRenderer: {fileID: 0}
 --- !u!1 &5602987724655657530
 GameObject:
   m_ObjectHideFlags: 0

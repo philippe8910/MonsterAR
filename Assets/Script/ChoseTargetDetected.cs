@@ -31,11 +31,18 @@ public class ChoseTargetDetected : MonoBehaviour
     {
         Targetindex[nowType] = cardIndex;
         targetCard[nowType].ChangeSprite(cardIndex);
+        SyncIndex();
         OnCrossChoseObject();
     }
 
     public void OnCrossChoseObject()
     {
         choseCardObject[nowType].SetActive(false);
+    }
+
+    public void SyncIndex()
+    {
+        var Detected = FindAnyObjectByType<DemonsDetectedManager>();
+        Detected.OnSyncIndex(Targetindex[1], Targetindex[2], Targetindex[3]);
     }
 }

@@ -6,16 +6,20 @@ using System.Collections;
 public class SceneTransition : MonoBehaviour
 {
     public Image transitionImage;
+    public GameObject blockingObjects;
     public float fadeTime = 1f;
+    public CanvasGroup transitionCanvasGroup;
 
     void Start()
     {
         StartCoroutine(GameStart());
+        blockingObjects.SetActive(false);
     }
 
     private IEnumerator GameStart()
     {
         yield return StartCoroutine(FadeOut());
+        
     }
 
     public void CallTransition()
@@ -44,6 +48,10 @@ public class SceneTransition : MonoBehaviour
 
     private IEnumerator FadeIn()
     {
+        if (transitionCanvasGroup != null)
+            transitionCanvasGroup.blocksRaycasts = true;
+        blockingObjects.SetActive(true);
+
         float t = 0f;
         Color c = transitionImage.color;
         while (t < fadeTime)
@@ -66,5 +74,10 @@ public class SceneTransition : MonoBehaviour
             transitionImage.color = c;
             yield return null;
         }
+
+        if (transitionCanvasGroup != null)
+            transitionCanvasGroup.blocksRaycasts = false;
+
+        blockingObjects.SetActive(false);
     }
 }

@@ -22,6 +22,12 @@ public class SummonerDetected : MonoBehaviour
         RestDemonsObject();
     }
 
+    public void RefreshDemonView()
+    {
+        RestDemonsObject();  // 全部先關
+        OnScanTarget();      // 根據 PlayerPrefs 再開對應惡魔
+    }
+
     private void RestDemonsObject()
     {
         for (int i = 0; i < theDemons.Length; i++)

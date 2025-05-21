@@ -36,6 +36,8 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        
+        
         if (MainScreen != null)
         {
             mainScreenOriginalPos = MainScreen.anchoredPosition;
@@ -144,6 +146,7 @@ public class UIManager : MonoBehaviour
         PlayerPrefs.SetInt("TargetNumber", targetIndex);
         theTargetImage.sprite = TargetDemon[PlayerPrefs.GetInt("TargetNumber")];
         Debug.Log($"選擇目標為：{SetBossName(targetIndex)},代碼為{PlayerPrefs.GetInt("TargetNumber")}");
+        FindAnyObjectByType<SummonerDetected>().RefreshDemonView();
     }
 
     private async void ReChoseTarget()

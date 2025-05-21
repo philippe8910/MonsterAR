@@ -68,33 +68,35 @@ public class DemonsDetectedManager : MonoBehaviour
     public void OnStartDetected()
     {
         var isArrests = false;
-        switch (PlayerPrefs.GetInt("BossNumber"))
-        {
-            case 1:
-                isArrests = IgnoreDetected();
-                break;
-            case 2:
-                isArrests = PrejudiceDetected();
-                break;
-            case 3:
-                isArrests = RejectionDetected();
-                break;
-            case 4:
-                isArrests = ShameDetected();
-                break;
-            case 5:
-                isArrests = OppressionDetected();
-                break;
-            case 6:
-                isArrests = HelplessnessDetected();
-                break;
-            case 7:
-                isArrests = BetrayalDetected();
-                break;
-            case 8:
-                isArrests = LonelinessDetected();
-                break;
-        }
+        if (PlayerPrefs.GetInt("BossNumber") == PlayerPrefs.GetInt("TargetNumber"))
+            switch (PlayerPrefs.GetInt("BossNumber"))
+            {
+                case 1:
+                    isArrests = IgnoreDetected();
+                    break;
+                case 2:
+                    isArrests = PrejudiceDetected();
+                    break;
+                case 3:
+                    isArrests = RejectionDetected();
+                    break;
+                case 4:
+                    isArrests = ShameDetected();
+                    break;
+                case 5:
+                    isArrests = OppressionDetected();
+                    break;
+                case 6:
+                    isArrests = HelplessnessDetected();
+                    break;
+                case 7:
+                    isArrests = BetrayalDetected();
+                    break;
+                case 8:
+                    isArrests = LonelinessDetected();
+                    break;
+            }
+        else isArrests = false;
         WinDetected(isArrests);
     }
 
@@ -104,9 +106,9 @@ public class DemonsDetectedManager : MonoBehaviour
         {
             ShowHintImage(true);
             await Task.Delay(4000);
-            FindObjectOfType<SceneTransition>().CallTransition();
+            /*FindObjectOfType<SceneTransition>().CallTransition();
             await Task.Delay(1000);
-            settlement.winPage.SetActive(true);
+            settlement.winPage.SetActive(true);*/
         }
         else
         {
@@ -117,9 +119,10 @@ public class DemonsDetectedManager : MonoBehaviour
             }
             else
             {
-                FindObjectOfType<SceneTransition>().CallTransition();
+                ShowHintImage(false);//´ú¤Y­n§R
+                /*FindObjectOfType<SceneTransition>().CallTransition();
                 await Task.Delay(1000);
-                settlement.losePage.SetActive(true);
+                settlement.losePage.SetActive(true);*/
             }
             
         }
@@ -167,17 +170,17 @@ public class DemonsDetectedManager : MonoBehaviour
 
     private bool HelplessnessDetected()
     {
-        if (choseOCard != 5) return false;
-        if (choseRCard != 4 && choseRCard != 6) return false;
-        if (choseACard != 3 && choseACard != 6) return false;
+        if (choseOCard != 4) return false;
+        if (choseRCard != 7 && choseRCard != 8) return false;
+        if (choseACard != 3 && choseACard != 5) return false;
         return true;
     }
 
     private bool BetrayalDetected()
     {
         if (choseOCard != 2) return false;
-        if (choseRCard != 1 && choseRCard != 7) return false;
-        if (choseACard != 1 && choseACard != 2) return false;
+        if (choseRCard != 1 && choseRCard != 2) return false;
+        if (choseACard != 1 && choseACard != 7) return false;
         return true;
     }
 

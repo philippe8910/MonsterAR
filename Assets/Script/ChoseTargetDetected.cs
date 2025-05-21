@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChoseTargetDetected : MonoBehaviour
 {
@@ -44,5 +45,13 @@ public class ChoseTargetDetected : MonoBehaviour
     {
         var Detected = FindAnyObjectByType<DemonsDetectedManager>();
         Detected.OnSyncIndex(Targetindex[1], Targetindex[2], Targetindex[3]);
+    }
+
+    public void AllLockoff()
+    {
+        for (int i = 0; i < targetCard.Length; i++)
+        {
+            targetCard[i].GetComponent<Button>().interactable = true;
+        }
     }
 }

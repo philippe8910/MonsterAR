@@ -106,9 +106,9 @@ public class DemonsDetectedManager : MonoBehaviour
         {
             ShowHintImage(true);
             await Task.Delay(4000);
-            /*FindObjectOfType<SceneTransition>().CallTransition();
+            FindObjectOfType<SceneTransition>().CallTransition();
             await Task.Delay(1000);
-            settlement.winPage.SetActive(true);*/
+            settlement.winPage.SetActive(true);
         }
         else
         {
@@ -119,10 +119,9 @@ public class DemonsDetectedManager : MonoBehaviour
             }
             else
             {
-                ShowHintImage(false);//´ú¤Y­n§R
-                /*FindObjectOfType<SceneTransition>().CallTransition();
+                FindObjectOfType<SceneTransition>().CallTransition();
                 await Task.Delay(1000);
-                settlement.losePage.SetActive(true);*/
+                settlement.losePage.SetActive(true);
             }
             
         }

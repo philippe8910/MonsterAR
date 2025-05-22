@@ -10495,15 +10495,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1318935079978438870, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.13207549
+      value: 0.54668033
       objectReference: {fileID: 0}
     - target: {fileID: 1318935079978438870, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.13207549
+      value: 0.81132966
       objectReference: {fileID: 0}
     - target: {fileID: 1318935079978438870, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.13207549
+      value: 0.990566
       objectReference: {fileID: 0}
     - target: {fileID: 1318935079978438871, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: m_Materials.Array.size
@@ -10515,15 +10515,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3280519133223516628, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.1509434
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3280519133223516628, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.1509434
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3280519133223516628, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.1509434
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3280519133223516629, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: m_Materials.Array.size
@@ -10605,17 +10605,21 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3280519133430969737, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6679182840704168355, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.09433961
+      value: 0.4537647
       objectReference: {fileID: 0}
     - target: {fileID: 6679182840704168355, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.09433961
+      value: 0.87524104
       objectReference: {fileID: 0}
     - target: {fileID: 6679182840704168355, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.09433961
+      value: 0.9339623
       objectReference: {fileID: 0}
     - target: {fileID: 7893921968227561089, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: m_Materials.Array.size
@@ -13523,6 +13527,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3741526578738539630, guid: 9ae5c390177818547aa32ebedfb9ad15, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5464990305568675831}
+    - targetCorrespondingSourceObject: {fileID: 3741526578738539630, guid: 9ae5c390177818547aa32ebedfb9ad15, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6190122342318045966}
     - targetCorrespondingSourceObject: {fileID: 5456865055203666596, guid: 9ae5c390177818547aa32ebedfb9ad15, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1856499113}
@@ -13535,6 +13542,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9147432815347125621, guid: 9ae5c390177818547aa32ebedfb9ad15, type: 3}
   m_PrefabInstance: {fileID: 6190122342318045964}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6190122342318045966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5464990305568675827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 1595683107036095573}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: summonerarray
+  mDatasetName: Vuforia/EmotionalDemonsTest.xml
+  mCastedBehaviour: {fileID: 1595683107036095573}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
 --- !u!1 &6200473294886185972
 GameObject:
   m_ObjectHideFlags: 0

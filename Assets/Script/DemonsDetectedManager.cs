@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class DemonsDetectedManager : MonoBehaviour
 {
     [Header("檢測區域")]
-    [SerializeField] public bool findDemons;
+    [SerializeField] private bool findDemons;
     [SerializeField] public int choseRCard;
     [SerializeField] public int choseOCard;
     [SerializeField] public int choseACard;
@@ -128,28 +128,20 @@ public class DemonsDetectedManager : MonoBehaviour
         
         if (enable)
         {
-            // 建立所有 ScanObject
-            var spawnedObjects = new GameObject[scanObject.Length];
             for (int i = 0; i < scanObject.Length; i++)
             {
                 if (scanObject[i] != null)
                 {
-                    spawnedObjects[i] = Instantiate(scanObject[i], transform);
+                   Instantiate(scanObject[i], transform);
                 }
             }
         }
         else
         {
-            // 銷毀所有已產生的 ScanObject
-            if (scanObject != null)
+            GameObject[] arObjects = GameObject.FindGameObjectsWithTag("ARObject");
+            foreach (var obj in arObjects)
             {
-                for (int i = 0; i < scanObject.Length; i++)
-                {
-                    if (scanObject[i] != null)
-                        Destroy(scanObject[i]);
-                }
-
-                scanObject = null;
+                Destroy(obj);
             }
         }
     }

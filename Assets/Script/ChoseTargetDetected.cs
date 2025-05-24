@@ -47,6 +47,11 @@ public class ChoseTargetDetected : MonoBehaviour
         Detected.OnSyncIndex(Targetindex[1], Targetindex[2], Targetindex[3]);
     }
 
+    public void OnButtonLockoff(int offLockIndex)
+    {
+        targetCard[offLockIndex].GetComponent<Button>().interactable = true;
+    }
+
     public void AllLockoff()
     {
         for (int i = 0; i < targetCard.Length; i++)

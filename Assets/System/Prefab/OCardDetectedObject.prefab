@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7361181022906043390}
   - component: {fileID: 1327635367780782405}
+  - component: {fileID: 8728459507606695407}
   - component: {fileID: 3485815154347863564}
   - component: {fileID: 94027375867524852}
   m_Layer: 0
   m_Name: OCardDetectedObject
-  m_TagString: Untagged
+  m_TagString: ARObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,6 +63,19 @@ MonoBehaviour:
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
   mPreview: {fileID: 94027375867524852}
+--- !u!114 &8728459507606695407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7768597690072773365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee5bf7d6cbf95384ebeaf7e29d9906b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theIndex: 2
 --- !u!114 &3485815154347863564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,9 +117,9 @@ MonoBehaviour:
   OnTargetFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ARButtonController, Assembly-CSharp
-        m_MethodName: EnableButton
+      - m_Target: {fileID: 8728459507606695407}
+        m_TargetAssemblyTypeName: OnFindCard, Assembly-CSharp
+        m_MethodName: OnFindCardIndex
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

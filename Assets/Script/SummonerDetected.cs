@@ -58,7 +58,7 @@ public class SummonerDetected : MonoBehaviour
     public void OnScanTarget()
     {
         int target = PlayerPrefs.GetInt("TargetNumber", 0);
-        Debug.Log("Scan");
+        FindObjectOfType<DemonsDetectedManager>().FindDemons();
         theDemons[target].SetActive(true);
         OnScanTargetFX();
     }
@@ -92,7 +92,15 @@ public class SummonerDetected : MonoBehaviour
         GameObject fx = Instantiate(scanFxPrefab, spawnPoint.position, spawnPoint.rotation, spawnPoint);
         fx.transform.localPosition = Vector3.zero;
         fx.transform.localRotation = Quaternion.identity;
+    }
 
-        Destroy(fx, 3f);
+    public void OnWinFX()
+    {
+        Debug.Log("FX");
+        if (winFxPrefab == null || spawnPoint == null) return;
+
+        GameObject fx = Instantiate(winFxPrefab, spawnPoint.position, spawnPoint.rotation, spawnPoint);
+        fx.transform.localPosition = Vector3.zero;
+        fx.transform.localRotation = Quaternion.identity;
     }
 }

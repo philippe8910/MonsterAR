@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class DemonsDetectedManager : MonoBehaviour
 {
     [Header("檢測區域")]
-    [SerializeField] private bool findDemons;
+    [SerializeField] public bool findDemons;
     [SerializeField] public int choseRCard;
     [SerializeField] public int choseOCard;
     [SerializeField] public int choseACard;
@@ -36,14 +36,6 @@ public class DemonsDetectedManager : MonoBehaviour
         startDetected.interactable = false;
         attemptsLeft = 3;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
 
     public void FindDemons()
     {
@@ -108,6 +100,7 @@ public class DemonsDetectedManager : MonoBehaviour
         if (isWin)
         {
             ShowHintImage(true);
+            FindObjectOfType<SummonerDetected>().OnWinFX();
             await Task.Delay(4000);
             FindObjectOfType<SceneTransition>().CallTransition();
             await Task.Delay(1000);
@@ -135,7 +128,6 @@ public class DemonsDetectedManager : MonoBehaviour
         
         if (enable)
         {
-            Debug.Log("產生惡魔");
             // 建立所有 ScanObject
             var spawnedObjects = new GameObject[scanObject.Length];
             for (int i = 0; i < scanObject.Length; i++)
@@ -148,7 +140,6 @@ public class DemonsDetectedManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("刪除惡魔");
             // 銷毀所有已產生的 ScanObject
             if (scanObject != null)
             {

@@ -427,7 +427,7 @@ MonoBehaviour:
   - {fileID: 7771810312006627129}
   spawnPoint: {fileID: 5516820286392740540}
   scanFxPrefab: {fileID: 2630623090989985735, guid: 99cf3212be9406d46968cd3002f8abe4, type: 3}
-  winFxPrefab: {fileID: 2630623090989985735, guid: 99cf3212be9406d46968cd3002f8abe4, type: 3}
+  winFxPrefab: {fileID: 4424327938720385256, guid: fdf0dc21d9207b446b7f6c0cc5a42ca7, type: 3}
 --- !u!1 &3754477007960750864
 GameObject:
   m_ObjectHideFlags: 0

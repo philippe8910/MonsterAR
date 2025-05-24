@@ -24,6 +24,9 @@ public class DemonsDetectedManager : MonoBehaviour
     [SerializeField]  public Sprite failSprite;
     [SerializeField]  public float fadeDuration = 0.5f;
 
+    [Header("掃描物件")]
+    [SerializeField] public GameObject[] scanObject;
+
     [Header("機會次數")]
     [SerializeField] public int attemptsLeft;
 
@@ -124,6 +127,39 @@ public class DemonsDetectedManager : MonoBehaviour
                 settlement.losePage.SetActive(true);
             }
             
+        }
+    }
+
+    public void ScanObjectCtrl(bool enable)
+    {
+        
+        if (enable)
+        {
+            Debug.Log("產生惡魔");
+            // 建立所有 ScanObject
+            var spawnedObjects = new GameObject[scanObject.Length];
+            for (int i = 0; i < scanObject.Length; i++)
+            {
+                if (scanObject[i] != null)
+                {
+                    spawnedObjects[i] = Instantiate(scanObject[i], transform);
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("刪除惡魔");
+            // 銷毀所有已產生的 ScanObject
+            if (scanObject != null)
+            {
+                for (int i = 0; i < scanObject.Length; i++)
+                {
+                    if (scanObject[i] != null)
+                        Destroy(scanObject[i]);
+                }
+
+                scanObject = null;
+            }
         }
     }
 

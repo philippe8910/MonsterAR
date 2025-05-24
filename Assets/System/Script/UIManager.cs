@@ -146,7 +146,6 @@ public class UIManager : MonoBehaviour
         PlayerPrefs.SetInt("TargetNumber", targetIndex);
         theTargetImage.sprite = TargetDemon[PlayerPrefs.GetInt("TargetNumber")];
         Debug.Log($"選擇目標為：{SetBossName(targetIndex)},代碼為{PlayerPrefs.GetInt("TargetNumber")}");
-        FindAnyObjectByType<SummonerDetected>().RefreshDemonView();
     }
 
     private async void ReChoseTarget()
@@ -162,11 +161,13 @@ public class UIManager : MonoBehaviour
         await Task.Delay(1000);
         ScreenObject[0].SetActive(true);
         ScreenObject[1].SetActive(true);
+        FindObjectOfType<DemonsDetectedManager>().ScanObjectCtrl(false);
     }
 
     private async void ConfirmationTargets()
     {
         FindObjectOfType<SceneTransition>().CallTransition();
+        FindObjectOfType<DemonsDetectedManager>().ScanObjectCtrl(true);
         await Task.Delay(1000);
         ScreenObject[1].SetActive(false);
     }

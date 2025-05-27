@@ -34,6 +34,10 @@ public class UIManager : MonoBehaviour
     [Header("InGame Screen")]
     public Button inGameRechoseBtn;
 
+    [Header("Game UI")]
+    public GameObject NormalBtn;
+    public GameObject InGamelBtn;
+
     void Start()
     {
         
@@ -107,6 +111,7 @@ public class UIManager : MonoBehaviour
 
         DisplayUbtton(false);
         ResetDetected();
+        SetGameUI(false);
     }
 
     public async void StartGame()
@@ -162,6 +167,7 @@ public class UIManager : MonoBehaviour
         ScreenObject[0].SetActive(true);
         ScreenObject[1].SetActive(true);
         FindObjectOfType<DemonsDetectedManager>().ScanObjectCtrl(false);
+        SetGameUI(false);
     }
 
     private async void ConfirmationTargets()
@@ -170,6 +176,7 @@ public class UIManager : MonoBehaviour
         FindObjectOfType<DemonsDetectedManager>().ScanObjectCtrl(true);
         await Task.Delay(1000);
         ScreenObject[1].SetActive(false);
+        SetGameUI(true);
     }
 
     private string SetBossName(int checkIndex)
@@ -223,6 +230,20 @@ public class UIManager : MonoBehaviour
         {
             IntroductionScreen.DOAnchorPos(introScreenOriginalPos, 0.5f)
                 .SetEase(Ease.OutQuad);
+        }
+    }
+
+    private void SetGameUI(bool inGame)
+    {
+        if (inGame)
+        {
+            NormalBtn.SetActive(false);
+            InGamelBtn.SetActive(true);
+        }
+        else
+        {
+            NormalBtn.SetActive(true);
+            InGamelBtn.SetActive(false);
         }
     }
 

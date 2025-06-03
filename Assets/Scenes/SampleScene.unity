@@ -3631,6 +3631,7 @@ MonoBehaviour:
   inGameRechoseBtn: {fileID: 415868514}
   NormalBtn: {fileID: 465932756}
   InGamelBtn: {fileID: 286690737}
+  audioManager: {fileID: 1044998329}
 --- !u!1 &500460795
 GameObject:
   m_ObjectHideFlags: 0
@@ -6044,7 +6045,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6f99e21d6e011f245ac21dea86ad3077, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6961,7 +6962,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bf3982c0be74d9a408b1f80ebed8d7b7, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.08
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -7096,8 +7097,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Introduction: {fileID: 1863585805}
   prompts: {fileID: 849565133}
-  bgm: {fileID: 0}
-  btnSE: {fileID: 0}
+  soundEffect: {fileID: 0}
+  bgm: {fileID: 1010909879}
+  btnSE: {fileID: 875452761}
 --- !u!1 &1057651511
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,6 +38,9 @@ public class UIManager : MonoBehaviour
     public GameObject NormalBtn;
     public GameObject InGamelBtn;
 
+    [Header("Audio")]
+    [SerializeField] private AudioManager audioManager;
+
     void Start()
     {
         
@@ -117,6 +120,7 @@ public class UIManager : MonoBehaviour
     public async void StartGame()
     {
         FindObjectOfType<SceneTransition>().CallTransition();
+        audioManager.ButtonClickSound();
         await Task.Delay(1000);
         if (MainScreen != null)
         {
@@ -127,6 +131,7 @@ public class UIManager : MonoBehaviour
         }
         PlayerPrefs.SetInt("BossNumber", bossIndex);
         Debug.Log($"啟動遊戲，Boss為：{SetBossName(bossIndex)},代碼為{PlayerPrefs.GetInt("BossNumber")}");
+        
     }
 
     public void ResetDetected()
@@ -146,16 +151,19 @@ public class UIManager : MonoBehaviour
     private async void ChoseTargetDemons()
     {
         FindObjectOfType<SceneTransition>().CallTransition();
+        audioManager.ButtonClickSound();
         await Task.Delay(1000);
         ScreenObject[0].SetActive(false);
         PlayerPrefs.SetInt("TargetNumber", targetIndex);
         theTargetImage.sprite = TargetDemon[PlayerPrefs.GetInt("TargetNumber")];
         Debug.Log($"選擇目標為：{SetBossName(targetIndex)},代碼為{PlayerPrefs.GetInt("TargetNumber")}");
+        audioManager.SetIntroductionAudio(PlayerPrefs.GetInt("TargetNumber"));
     }
 
     private async void ReChoseTarget()
     {
         FindObjectOfType<SceneTransition>().CallTransition();
+        audioManager.ButtonClickSound();
         await Task.Delay(1000);
         ScreenObject[0].SetActive(true);
     }
@@ -163,6 +171,7 @@ public class UIManager : MonoBehaviour
     private async void InGameReChoseTarget()
     {
         FindObjectOfType<SceneTransition>().CallTransition();
+        audioManager.ButtonClickSound();
         await Task.Delay(1000);
         ScreenObject[0].SetActive(true);
         ScreenObject[1].SetActive(true);
@@ -174,6 +183,7 @@ public class UIManager : MonoBehaviour
     {
         FindObjectOfType<SceneTransition>().CallTransition();
         FindObjectOfType<DemonsDetectedManager>().ScanObjectCtrl(true);
+        audioManager.ButtonClickSound();
         await Task.Delay(1000);
         ScreenObject[1].SetActive(false);
         SetGameUI(true);
@@ -216,6 +226,7 @@ public class UIManager : MonoBehaviour
     public async void StartIntroduction()
     {
         FindObjectOfType<SceneTransition>().CallTransition();
+        audioManager.ButtonClickSound();
         await Task.Delay(1000);
         if (IntroductionScreen != null)
         {
@@ -250,6 +261,7 @@ public class UIManager : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("退出遊戲");
+        audioManager.ButtonClickSound();
         Application.Quit();
     }
 

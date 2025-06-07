@@ -19,10 +19,12 @@ public class DemonsDetectedManager : MonoBehaviour
     [SerializeField] SettlementManager settlement;
 
     [Header("提示圖片相關")]
-    [SerializeField]  public Image hintImage;
-    [SerializeField]  public Sprite successSprite;
-    [SerializeField]  public Sprite failSprite;
-    [SerializeField]  public float fadeDuration = 0.5f;
+    [SerializeField] public Image hintImage;
+    [SerializeField] public Sprite successSprite;
+    [SerializeField] public Sprite failSprite;
+    [SerializeField] public Image gameOverimg;
+    [SerializeField] public float fadeDuration = 0.5f;
+    [SerializeField] public GameObject[] HPObject;
 
     [Header("掃描物件")]
     [SerializeField] public GameObject[] scanObject;
@@ -35,6 +37,7 @@ public class DemonsDetectedManager : MonoBehaviour
     {
         startDetected.interactable = false;
         attemptsLeft = 3;
+        gameOverimg.gameObject.SetActive(false);
     }
 
     public void FindDemons()
@@ -108,13 +111,17 @@ public class DemonsDetectedManager : MonoBehaviour
         }
         else
         {
+            attemptsLeft--;
+            SetHPAnimation(attemptsLeft);
             if (attemptsLeft != 0)
             {
-                attemptsLeft--;
                 ShowHintImage(false);
             }
             else
             {
+                gameOverimg.gameObject.SetActive(true); 
+                FadeInGameOverImage();
+                await Task.Delay(3000);
                 FindObjectOfType<SceneTransition>().CallTransition();
                 await Task.Delay(1000);
                 settlement.losePage.SetActive(true);
@@ -253,6 +260,41 @@ public class DemonsDetectedManager : MonoBehaviour
             }
 
             hintImage.gameObject.SetActive(false);
+        }
+    }
+
+    private async void SetHPAnimation(int playerHP)
+    {
+        HPObject[playerHP].SetActive(false);
+        await Task.Delay(300);
+        HPObject[playerHP].SetActive(true);
+        await Task.Delay(300);
+        HPObject[playerHP].SetActive(false);
+        await Task.Delay(300);
+        HPObject[playerHP].SetActive(true);
+        await Task.Delay(300);
+        HPObject[playerHP].SetActive(false);
+    }
+
+    public void FadeInGameOverImage()
+    {
+        StartCoroutine(FadeImageCoroutine());
+    }
+
+    IEnumerator FadeImageCoroutine()
+    {
+        float duration = 1f; // 淡出所需秒數
+        float currentTime = 0f;
+        Color color = gameOverimg.color;
+        color.a = 0f;
+        gameOverimg.color = color;
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            color.a = Mathf.Clamp01(currentTime / duration);
+            gameOverimg.color = color;
+            yield return null;
         }
     }
 }

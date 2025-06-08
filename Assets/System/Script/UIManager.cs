@@ -37,6 +37,7 @@ public class UIManager : MonoBehaviour
     [Header("Game UI")]
     public GameObject NormalBtn;
     public GameObject InGamelBtn;
+    public GameObject settingPageObject;
 
     [Header("Audio")]
     [SerializeField] private AudioManager audioManager;
@@ -261,6 +262,12 @@ public class UIManager : MonoBehaviour
             NormalBtn.SetActive(true);
             InGamelBtn.SetActive(false);
         }
+    }
+
+    public void OpenSetting()
+    {
+        settingPageObject.SetActive(true);
+        settingPageObject.GetComponent<SettingPage>().CheckAudio();
     }
 
     public void QuitGame()

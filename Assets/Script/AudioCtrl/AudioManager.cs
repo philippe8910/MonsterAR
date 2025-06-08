@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private AudioCtrl Introduction;//prompts
-    [SerializeField] private AudioCtrl prompts;
-    [SerializeField] private AudioCtrl soundEffect;
-    [SerializeField] private AudioSource bgm;
-    [SerializeField] private AudioSource btnSE;
+    [SerializeField] public AudioCtrl Introduction;//prompts
+    [SerializeField] public AudioCtrl prompts;
+    [SerializeField] public AudioCtrl soundEffect;
+    [SerializeField] public AudioSource bgm;
+    [SerializeField] public AudioSource btnSE;
     public void SetIntroductionAudio(int index)
     {
         Introduction.PlaySound(index);

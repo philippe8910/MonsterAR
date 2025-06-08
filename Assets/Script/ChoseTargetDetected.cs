@@ -50,7 +50,7 @@ public class ChoseTargetDetected : MonoBehaviour
     public void OnButtonLockoff(int offLockIndex)
     {
         targetCard[offLockIndex].GetComponent<Button>().interactable = true;
-        FindAnyObjectByType<DemonsDetectedManager>().OnStartDetected();
+        //FindAnyObjectByType<DemonsDetectedManager>().OnStartDetected();
     }
 
     public void AllLockoff()

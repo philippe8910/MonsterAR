@@ -60,6 +60,7 @@ public class DemonsDetectedManager : MonoBehaviour
         {
             startDetected.interactable = true;
             detectedButtonTX.text = "Æ∑Æª¥c≈]!";
+            OnStartDetected();
         }
     }
 
@@ -100,14 +101,30 @@ public class DemonsDetectedManager : MonoBehaviour
 
     private async void WinDetected(bool isWin)
     {
+        var demonsSummoner = FindObjectOfType<SummonerDetected>();
+        var audio = FindAnyObjectByType<AudioManager>();
         if (isWin)
         {
             ShowHintImage(true);
-            FindObjectOfType<SummonerDetected>().OnWinFX();
+            audio.SetSEAudio(2);
+            demonsSummoner.theDemons[PlayerPrefs.GetInt("TargetNumber")].GetComponent<Animator>().Play("dead");
             await Task.Delay(4000);
+            demonsSummoner.OnWinFX();
+            await Task.Delay(150);
+            for (int i = 0; i < demonsSummoner.theDemons.Length; i++)
+            {
+                if (demonsSummoner.theDemons[i] != null)
+                {
+                    demonsSummoner.theDemons[i].SetActive(false);
+                }
+            }
+            audio.SetSEAudio(3);
+            await Task.Delay(1000);
             FindObjectOfType<SceneTransition>().CallTransition();
             await Task.Delay(1000);
             settlement.winPage.SetActive(true);
+            audio.SetPromptsAudio(3);
+            audio.SetSEAudio(0);
         }
         else
         {
@@ -119,7 +136,17 @@ public class DemonsDetectedManager : MonoBehaviour
             }
             else
             {
-                gameOverimg.gameObject.SetActive(true); 
+                gameOverimg.gameObject.SetActive(true);
+                audio.SetSEAudio(1);
+                demonsSummoner.OnScanTargetFX();
+                //await Task.Delay(150);
+                for (int i = 0; i < demonsSummoner.theDemons.Length; i++)
+                {
+                    if (demonsSummoner.theDemons[i] != null)
+                    {
+                        demonsSummoner.theDemons[i].SetActive(false);
+                    }
+                }
                 FadeInGameOverImage();
                 await Task.Delay(3000);
                 FindObjectOfType<SceneTransition>().CallTransition();

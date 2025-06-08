@@ -171,6 +171,11 @@ public class UIManager : MonoBehaviour
     private async void InGameReChoseTarget()
     {
         FindObjectOfType<SceneTransition>().CallTransition();
+        var cohseTarget = FindAnyObjectByType<ChoseTargetDetected>();
+        for (int i = 0; i < cohseTarget.Targetindex.Length; i++)
+        {
+            cohseTarget.Targetindex[i] = 0;
+        }
         audioManager.ButtonClickSound();
         await Task.Delay(1000);
         ScreenObject[0].SetActive(true);

@@ -7,7 +7,7 @@ public class ChoseTargetDetected : MonoBehaviour
 {
     [Header("¥dµP")]
     [SerializeField] private ARButtonController[] targetCard;
-    [SerializeField] private int[] Targetindex;
+    [SerializeField] public int[] Targetindex;
     [SerializeField] private int nowType;
 
     [Header("¿ïµP¤¶­±")]
@@ -50,6 +50,7 @@ public class ChoseTargetDetected : MonoBehaviour
     public void OnButtonLockoff(int offLockIndex)
     {
         targetCard[offLockIndex].GetComponent<Button>().interactable = true;
+        FindAnyObjectByType<DemonsDetectedManager>().OnStartDetected();
     }
 
     public void AllLockoff()

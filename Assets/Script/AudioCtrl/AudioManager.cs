@@ -19,6 +19,11 @@ public class AudioManager : MonoBehaviour
         prompts.PlaySound(index);
     }
 
+    public void SetSEAudio(int index)
+    {
+        soundEffect.PlaySound(index);
+    }
+
     public void ButtonClickSound()
     {
         btnSE.Play();

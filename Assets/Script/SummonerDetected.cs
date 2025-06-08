@@ -5,7 +5,7 @@ using Vuforia;
 
 public class SummonerDetected : MonoBehaviour
 {
-    [SerializeField] private GameObject[] theDemons;
+    [SerializeField] public GameObject[] theDemons;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private GameObject scanFxPrefab;
     [SerializeField] private GameObject winFxPrefab;

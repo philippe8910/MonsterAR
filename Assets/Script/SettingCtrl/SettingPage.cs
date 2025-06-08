@@ -16,7 +16,7 @@ public class SettingPage : MonoBehaviour
         CheckAudio();
         Debug.Log($" BGM: { PlayerPrefs.GetInt("BGMSet")}");
         Debug.Log($" SE: {PlayerPrefs.GetInt("SESet")}");
-        await Task.Delay(500);
+        await Task.Delay(200);
         ClosePage();
     }
 

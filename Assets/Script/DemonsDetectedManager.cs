@@ -60,7 +60,7 @@ public class DemonsDetectedManager : MonoBehaviour
         {
             startDetected.interactable = true;
             detectedButtonTX.text = "Æ∑Æª¥c≈]!";
-            OnStartDetected();
+            //OnStartDetected();
         }
     }
 

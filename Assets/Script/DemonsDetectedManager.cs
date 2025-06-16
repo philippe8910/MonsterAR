@@ -308,6 +308,8 @@ public class DemonsDetectedManager : MonoBehaviour
         StartCoroutine(FadeImageCoroutine());
     }
 
+
+
     IEnumerator FadeImageCoroutine()
     {
         float duration = 1f; // 淡出所需秒數

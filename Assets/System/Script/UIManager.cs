@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -275,6 +276,15 @@ public class UIManager : MonoBehaviour
         Debug.Log("退出遊戲");
         audioManager.ButtonClickSound();
         Application.Quit();
+    }
+
+    public async void OnBackHome()
+    {
+        FindObjectOfType<SceneTransition>().CallTransition();
+        audioManager.ButtonClickSound();
+        await Task.Delay(1300);
+        PlayerPrefs.SetInt("ResetLevel", 0);
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void DisplayUbtton(bool isDisplay)

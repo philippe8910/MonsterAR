@@ -157,9 +157,9 @@ public class SettingPage : MonoBehaviour
         if (isOpen)
         {
             audioManager.btnSE.volume = 0.05f;
-            audioManager.Introduction.GetComponent<AudioSource>().volume = 0.35f;
+            audioManager.Introduction.GetComponent<AudioSource>().volume = 0.45f;
             audioManager.prompts.GetComponent<AudioSource>().volume = 1f;
-            audioManager.soundEffect.GetComponent<AudioSource>().volume = 0.35f;
+            audioManager.soundEffect.GetComponent<AudioSource>().volume = 0.20f;
         }
         else
         {

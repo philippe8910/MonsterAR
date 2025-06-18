@@ -108,7 +108,9 @@ public class DemonsDetectedManager : MonoBehaviour
             ShowHintImage(true);
             audio.SetSEAudio(2);
             demonsSummoner.theDemons[PlayerPrefs.GetInt("TargetNumber")].GetComponent<Animator>().Play("dead");
-            await Task.Delay(4000);
+            await Task.Delay(1000);
+            FindObjectOfType<SummonerDetected>().FadeToWhite(PlayerPrefs.GetInt("TargetNumber"));
+            await Task.Delay(3000);
             demonsSummoner.OnWinFX();
             await Task.Delay(150);
             for (int i = 0; i < demonsSummoner.theDemons.Length; i++)

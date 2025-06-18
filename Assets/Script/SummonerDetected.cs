@@ -136,14 +136,27 @@ public class SummonerDetected : MonoBehaviour
         float duration = 1.5f;
         float t = 0f;
         Color original = mat.color;
+        float maxWhiteBlend = 0.4f;
+        float maxEmission = 0.4f;
+
+        Color targetWhite = Color.Lerp(original, Color.white, maxWhiteBlend);
+        mat.EnableKeyword("_EMISSION");
 
         while (t < 1f)
         {
             t += Time.deltaTime / duration;
-            mat.color = Color.Lerp(original, Color.white, t);
+
+            // 淡入至目標白度
+            mat.color = Color.Lerp(original, targetWhite, t);
+
+            // 柔和發光
+            mat.SetColor("_EmissionColor", Color.white * (t * maxEmission));
+
             yield return null;
         }
 
-        mat.color = Color.white;
+        mat.color = targetWhite;
+        mat.SetColor("_EmissionColor", Color.white * maxEmission);
     }
+
 }

@@ -27,7 +27,9 @@ public class UIManager : MonoBehaviour
     public GameObject[] ScreenObject;
     public Button[] TargetBtn;
     public Sprite[] TargetDemon;
+    public Sprite[] TargetDemonText;
     public Image theTargetImage;
+    public Image theTargetText;
     public Button GameStartBtn;
     public Button RechoseBtn;
     public int targetIndex = -1;
@@ -158,6 +160,7 @@ public class UIManager : MonoBehaviour
         ScreenObject[0].SetActive(false);
         PlayerPrefs.SetInt("TargetNumber", targetIndex);
         theTargetImage.sprite = TargetDemon[PlayerPrefs.GetInt("TargetNumber")];
+        theTargetText.sprite = TargetDemonText[PlayerPrefs.GetInt("TargetNumber")];
         Debug.Log($"選擇目標為：{SetBossName(targetIndex)},代碼為{PlayerPrefs.GetInt("TargetNumber")}");
         audioManager.SetIntroductionAudio(PlayerPrefs.GetInt("TargetNumber"));
     }

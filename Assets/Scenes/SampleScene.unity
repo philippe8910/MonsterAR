@@ -1879,7 +1879,7 @@ RectTransform:
   m_GameObject: {fileID: 278137082}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.88509, y: 0.88509, z: 0.88509}
+  m_LocalScale: {x: 1.293382, y: 0.88509, z: 0.88509}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1073994707}
@@ -1910,7 +1910,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1faedb93fab25f1459f5ca59b486a1ef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 605c960b37fe6aa46915c1465b482337, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3871,7 +3871,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6e2a4f11232e09146b90ac59c59381c7, type: 3}
   - {fileID: 21300000, guid: 30c0f04c243fce34fb460f04e51c542a, type: 3}
   - {fileID: 21300000, guid: 965dbcc0bdeaa684ab245ea73c3bfe7f, type: 3}
+  TargetDemonText:
+  - {fileID: 21300000, guid: 8446275cd30a6d84a8bcd6190fd4981d, type: 3}
+  - {fileID: 21300000, guid: 605c960b37fe6aa46915c1465b482337, type: 3}
+  - {fileID: 21300000, guid: a86a92706603a254ea21404a99c77ac8, type: 3}
+  - {fileID: 21300000, guid: c3df16e914761534ab3887edbcbba166, type: 3}
+  - {fileID: 21300000, guid: 7d1ab519043af964f8a873298df48466, type: 3}
+  - {fileID: 21300000, guid: 897c89085cc361c45bd6d834e2a7ec96, type: 3}
+  - {fileID: 21300000, guid: 6ac6b039f7393c24f8a9b6e46fe3641a, type: 3}
+  - {fileID: 21300000, guid: 9c2f7a86b26b9cc4d871326e8c91a745, type: 3}
+  - {fileID: 21300000, guid: 8446275cd30a6d84a8bcd6190fd4981d, type: 3}
   theTargetImage: {fileID: 1135751883}
+  theTargetText: {fileID: 278137084}
   GameStartBtn: {fileID: 1316019858}
   RechoseBtn: {fileID: 1317828768}
   targetIndex: -1
@@ -12759,7 +12770,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f000b55df8c918d47a5fa0ad56159398, type: 3}
   - {fileID: 8300000, guid: 3cfb0e0a49625334ca2ceec92f38ba2a, type: 3}
   - {fileID: 8300000, guid: 1862784a31643b44aafce39a00c29df8, type: 3}
-  - {fileID: 8300000, guid: 90a3a4c8c6362a74ebb6bf2c7deb2edb, type: 3}
+  - {fileID: 8300000, guid: 116139ba34dccd94286c750b74efc53d, type: 3}
   - {fileID: 8300000, guid: e6dfd4e81f23bdf4c89bb9e2dae487a4, type: 3}
   - {fileID: 8300000, guid: d361bc14e870fd649ac319af4bb6826d, type: 3}
   - {fileID: 8300000, guid: ef3074ac0d2f421468339152b995c890, type: 3}

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
   <Tracking>
+    <ImageTarget name="scan_rcard" size="1.000000 1.334180" />
+    <ImageTarget name="scan_ocard" size="1.000000 1.334180" />
     <ImageTarget name="r_scantest" size="1.000000 1.500000" />
     <ImageTarget name="o_scantest" size="1.000000 1.500000" />
     <ImageTarget name="a_scantest" size="1.000000 1.500000" />
     <ImageTarget name="summonerarray" size="1.000000 0.999300" />
+    <ImageTarget name="imgtest" size="1.000000 0.434349" />
   </Tracking>
 </QCARConfig>

@@ -51,13 +51,13 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: o_scantest
+  mTrackableName: scan_ocard
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/EmotionalDemonsTest.xml
-  mAspectRatio: 1.5
+  mAspectRatio: 1.33418
   mImageTargetType: 0
   mWidth: 1
-  mHeight: 1.5
+  mHeight: 1.33418
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0

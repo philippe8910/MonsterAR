@@ -64,13 +64,13 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: a_scantest
+  mTrackableName: argameacard
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/EmotionalDemonsTest.xml
-  mAspectRatio: 1.5
+  mAspectRatio: 1.33418
   mImageTargetType: 0
   mWidth: 1
-  mHeight: 1.5
+  mHeight: 1.33418
   mRuntimeTexture: {fileID: 0}
   mMotionHint: 1
   mTrackingOptimization: 0
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 2260179050897108571}
   mHiddenRoot: {fileID: 0}
-  mTargetName: a_scantest
+  mTargetName: argameacard
   mDatasetName: Vuforia/EmotionalDemonsTest.xml
   mCastedBehaviour: {fileID: 2260179050897108571}
   mMeshFilter: {fileID: 0}
@@ -173,15 +173,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1318935079978438870, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.34456214
+      value: 0.990566
       objectReference: {fileID: 0}
     - target: {fileID: 1318935079978438870, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.34456214
+      value: 0.8887011
       objectReference: {fileID: 0}
     - target: {fileID: 1318935079978438870, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.8396226
+      value: 0.5747152
       objectReference: {fileID: 0}
     - target: {fileID: 1318935079978438871, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: m_Materials.Array.size
@@ -189,15 +189,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3280519133223516628, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.43596476
+      value: 0.9676744
       objectReference: {fileID: 0}
     - target: {fileID: 3280519133223516628, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.44708017
+      value: 0.9811321
       objectReference: {fileID: 0}
     - target: {fileID: 3280519133223516628, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.9528302
+      value: 0.5229619
       objectReference: {fileID: 0}
     - target: {fileID: 3280519133223516629, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: m_Materials.Array.size
@@ -269,15 +269,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6679182840704168355, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.14057496
+      value: 0.8867924
       objectReference: {fileID: 0}
     - target: {fileID: 6679182840704168355, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.16576478
+      value: 0.6135674
       objectReference: {fileID: 0}
     - target: {fileID: 6679182840704168355, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.764151
+      value: 0.36391956
       objectReference: {fileID: 0}
     - target: {fileID: 7893921968227561089, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
       propertyPath: m_Materials.Array.size

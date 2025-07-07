@@ -15,6 +15,9 @@ public class SummonerDetected : MonoBehaviour
 
     [SerializeField] private Material[] demonMats;
 
+    [SerializeField] private float rotationSpeed = 100f;
+    private Vector3 lastMousePos;
+
     private void Awake()
     {
         RestDemonsObject();
@@ -28,7 +31,7 @@ public class SummonerDetected : MonoBehaviour
             observer.OnTargetStatusChanged += OnTargetStatusChanged;
         }
 
-        // ✅ 修正：從子物件中抓 SkinnedMeshRenderer 並複製 Element 1 (DeadFX)
+        //  修正：從子物件中抓 SkinnedMeshRenderer 並複製 Element 1 (DeadFX)
         demonMats = new Material[theDemons.Length];
         for (int i = 0; i < theDemons.Length; i++)
         {
@@ -46,11 +49,51 @@ public class SummonerDetected : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        RotateDemons();
+    }
+
     private void OnDestroy()
     {
         if (observer != null)
         {
             observer.OnTargetStatusChanged -= OnTargetStatusChanged;
+        }
+    }
+
+    private void RotateDemons()
+    {
+        float horizontal = 0f;
+
+#if UNITY_EDITOR
+        if (Input.GetMouseButtonDown(0))
+        {
+            lastMousePos = Input.mousePosition; // 開始拖曳時記錄位置
+        }
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 currentMousePos = Input.mousePosition;
+            horizontal = (currentMousePos.x - lastMousePos.x) * 0.1f;
+            lastMousePos = currentMousePos;
+        }
+#else
+    if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+    {
+        horizontal = Input.GetTouch(0).deltaPosition.x * 0.1f;
+    }
+#endif
+
+        if (Mathf.Abs(horizontal) > 0.01f)
+        {
+            foreach (var demon in theDemons)
+            {
+                if (demon != null && demon.activeInHierarchy)
+                {
+                    demon.transform.Rotate(Vector3.up, -horizontal * rotationSpeed * Time.deltaTime);
+                    Debug.Log("轉動中：" + horizontal);
+                }
+            }
         }
     }
 

@@ -159,7 +159,7 @@ MonoBehaviour:
   mObserverBehaviour: {fileID: 2260179050897108571}
   mHiddenRoot: {fileID: 0}
   mTargetName: argameacard
-  mDatasetName: Vuforia/EmotionalDemonsTest.xml
+  mDatasetName: Vuforia/EmotionalCardA.xml
   mCastedBehaviour: {fileID: 2260179050897108571}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}

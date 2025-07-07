@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
   <Tracking>
+    <ImageTarget name="argameocard_boosted" size="1.000000 1.334180" />
+    <ImageTarget name="argamercard_fixed" size="1.000000 1.334180" />
     <ImageTarget name="argameocard" size="1.000000 1.334180" />
     <ImageTarget name="argameacard" size="1.000000 1.334180" />
     <ImageTarget name="scan_rcard" size="1.000000 1.334180" />

@@ -59,7 +59,7 @@ public class DemonsDetectedManager : MonoBehaviour
         if (choseACard != 0 && choseOCard != 0 && choseRCard != 0 && findDemons)
         {
             startDetected.interactable = true;
-            detectedButtonTX.text = "Æ∑Æª¥c≈]!";
+            //detectedButtonTX.text = "Æ∑Æª¥c≈]!";
             //OnStartDetected();
         }
     }

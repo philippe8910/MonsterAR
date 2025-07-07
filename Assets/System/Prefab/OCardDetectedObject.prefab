@@ -51,7 +51,7 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: argameocard
+  mTrackableName: argameocard_boosted
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/EmotionalDemonsTest.xml
   mAspectRatio: 1.33418
@@ -158,8 +158,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mObserverBehaviour: {fileID: 1327635367780782405}
   mHiddenRoot: {fileID: 0}
-  mTargetName: argameocard
-  mDatasetName: Vuforia/EmotionalDemonsTest.xml
+  mTargetName: argameocard_boosted
+  mDatasetName: Vuforia/EmotionalCardA.xml
   mCastedBehaviour: {fileID: 1327635367780782405}
   mMeshFilter: {fileID: 0}
   mMeshRenderer: {fileID: 0}

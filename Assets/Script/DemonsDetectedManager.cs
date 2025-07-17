@@ -201,6 +201,12 @@ public class DemonsDetectedManager : MonoBehaviour
         WinDetected(detectionResult);
     }
 
+    // 新增：檢查惡魔是否已現身成功
+    public bool IsDemonShown()
+    {
+        return isDemonShown;
+    }
+
     private async void WinDetected(bool isWin)
     {
         var demonsSummoner = FindObjectOfType<SummonerDetected>();

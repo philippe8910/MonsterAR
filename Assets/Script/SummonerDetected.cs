@@ -127,10 +127,11 @@ public class SummonerDetected : MonoBehaviour
         int target = PlayerPrefs.GetInt("TargetNumber", 0);
         FindObjectOfType<DemonsDetectedManager>().FindDemons();
         theDemons[target].SetActive(true);
-        OnScanTargetFX();
         
-        // 新增：惡魔出現時設定為暗黑狀態
+        // 新增：惡魔出現時立刻設定為暗黑狀態（在煙霧前）
         SetDarkState(target);
+        
+        OnScanTargetFX();
     }
 
     public void OnLostTarget()
@@ -186,19 +187,33 @@ public class SummonerDetected : MonoBehaviour
     // 新增：讓第 x 個 demon 進入暗黑狀態
     public void SetDarkState(int index)
     {
+        Debug.Log($"SetDarkState 被調用，index: {index}");
+        
         if (index >= 0 && index < theDemons.Length && demonMats[index] != null)
         {
             isInDarkState[index] = true;
             
-            // 設定暗黑效果
-            float darkFactor = 0.2f; // 暗化程度
-            Color darkColor = originalColors[index] * darkFactor;
-            demonMats[index].color = darkColor;
+            // 參考 FadeMaterialToWhite 的邏輯，但改成黑色
+            Material mat = demonMats[index];
+            Color original = originalColors[index];
+            
+            // 混合到黑色（黑炭等級！）
+            // Color targetDark = Color.Lerp(original, Color.black, 0.95f);  // 如果純黑太極端可以用這個
+            
+            // 直接設成純黑炭！
+            Color targetDark = Color.black;
+            
+            // 設定顏色
+            mat.color = targetDark;
             
             // 關閉發光效果
-            demonMats[index].SetColor("_EmissionColor", Color.black);
+            mat.SetColor("_EmissionColor", Color.black);
             
-            Debug.Log($"惡魔 {index} 進入暗黑狀態");
+            Debug.Log($"惡魔 {index} 進入暗黑狀態：原始 {original} → 暗黑 {targetDark}");
+        }
+        else
+        {
+            Debug.LogError($"SetDarkState 失敗：index={index}, 範圍={theDemons.Length}, mat存在={demonMats[index] != null}");
         }
     }
 
@@ -207,11 +222,17 @@ public class SummonerDetected : MonoBehaviour
     {
         if (index >= 0 && index < theDemons.Length && demonMats[index] != null && isInDarkState[index])
         {
+            // 立刻恢復正常狀態（在煙霧開始時）
+            isInDarkState[index] = false;
+            
+            // 恢復原始顏色
+            demonMats[index].color = originalColors[index];
+            demonMats[index].SetColor("_EmissionColor", Color.black);
+            
             // 播放煙霧特效做為障眼法
             OnScanTargetFX();
             
-            // 延遲恢復正常狀態，讓煙霧有時間遮蔽
-            StartCoroutine(RestoreAfterDelay(index, 0.3f));
+            Debug.Log($"惡魔 {index} 立刻恢復正常狀態，煙霧開始");
         }
     }
 
@@ -223,24 +244,23 @@ public class SummonerDetected : MonoBehaviour
         Debug.Log($"惡魔 {target} 現身");
     }
 
-    // 延遲恢復正常狀態的協程
-    private IEnumerator RestoreAfterDelay(int index, float delay)
+    // 新增：對外接口 - 直接設定當前惡魔為黑色狀態（可綁定到AR外掛）
+    public void SetCurrentDemonToDark()
     {
-        yield return new WaitForSeconds(delay);
-        
-        if (index >= 0 && index < theDemons.Length && demonMats[index] != null)
+        // 檢查是否已經現身成功，如果已成功則不要變黑
+        var demonsManager = FindObjectOfType<DemonsDetectedManager>();
+        if (demonsManager != null && demonsManager.IsDemonShown())
         {
-            isInDarkState[index] = false;
-            
-            // 恢復原始顏色
-            demonMats[index].color = originalColors[index];
-            
-            // 關閉發光效果
-            demonMats[index].SetColor("_EmissionColor", Color.black);
-            
-            Debug.Log($"惡魔 {index} 恢復正常狀態");
+            Debug.Log("惡魔已現身成功，忽略變黑請求");
+            return;
         }
+        
+        int target = PlayerPrefs.GetInt("TargetNumber", 0);
+        SetDarkState(target);
+        Debug.Log($"對外接口：惡魔 {target} 設定為暗黑狀態");
     }
+
+    // 已移除：延遲恢復正常狀態的協程（改為立即恢復）
 
     // 淡入 Coroutine
     private IEnumerator FadeMaterialToWhite(Material mat)

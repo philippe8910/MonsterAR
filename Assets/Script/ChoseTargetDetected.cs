@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class ChoseTargetDetected : MonoBehaviour
 {
-    [Header("�d�P")]
+    [Header("�d�P")]
     [SerializeField] private ARButtonController[] targetCard;
     [SerializeField] public int[] Targetindex;
     [SerializeField] private int nowType;
 
-    [Header("��P����")]
+    [Header("��P����")]
     [SerializeField] private GameObject[] choseCardObject;
 
     // Start is called before the first frame update
@@ -59,5 +59,8 @@ public class ChoseTargetDetected : MonoBehaviour
         {
             targetCard[i].GetComponent<Button>().interactable = true;
         }
+        
+        // 注意：不在這裡更新快速解鎖按鈕狀態，因為這個方法是由按鈕自己呼叫的
+        Debug.Log("ChoseTargetDetected: 所有卡片已解鎖");
     }
 }

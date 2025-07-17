@@ -6,19 +6,19 @@ using UnityEngine.UI;
 
 public class DemonsDetectedManager : MonoBehaviour
 {
-    [Header("ÀË´ú°Ï°ì")]
+    [Header("ï¿½Ë´ï¿½ï¿½Ï°ï¿½")]
     [SerializeField] private bool findDemons;
     [SerializeField] public int choseRCard;
     [SerializeField] public int choseOCard;
     [SerializeField] public int choseACard;
 
-    [Header("±±¨îUIª«¥ó")]
+    [Header("ï¿½ï¿½ï¿½ï¿½UIï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] UIManager UIctrl;
     [SerializeField] Button startDetected;
     [SerializeField] Text detectedButtonTX;
     [SerializeField] SettlementManager settlement;
 
-    [Header("´£¥Ü¹Ï¤ù¬ÛÃö")]
+    [Header("ï¿½ï¿½ï¿½Ü¹Ï¤ï¿½ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] public Image hintImage;
     [SerializeField] public Sprite successSprite;
     [SerializeField] public Sprite failSprite;
@@ -26,10 +26,10 @@ public class DemonsDetectedManager : MonoBehaviour
     [SerializeField] public float fadeDuration = 0.5f;
     [SerializeField] public GameObject[] HPObject;
 
-    [Header("±½´yª«¥ó")]
+    [Header("ï¿½ï¿½ï¿½yï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] public GameObject[] scanObject;
 
-    [Header("¾÷·|¦¸¼Æ")]
+    [Header("ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] public int attemptsLeft;
 
     // Start is called before the first frame update
@@ -38,6 +38,13 @@ public class DemonsDetectedManager : MonoBehaviour
         startDetected.interactable = false;
         attemptsLeft = 3;
         gameOverimg.gameObject.SetActive(false);
+        
+        // é‡ç½®å¿«é€Ÿè§£é–æŒ‰éˆ•ç‹€æ…‹
+        var fastUnlockButton = FindAnyObjectByType<FastUnlockButton>();
+        if (fastUnlockButton != null)
+        {
+            fastUnlockButton.ResetToLocked();
+        }
     }
 
     public void FindDemons()
@@ -59,7 +66,7 @@ public class DemonsDetectedManager : MonoBehaviour
         if (choseACard != 0 && choseOCard != 0 && choseRCard != 0 && findDemons)
         {
             startDetected.interactable = true;
-            //detectedButtonTX.text = "®·®»´cÅ]!";
+            //detectedButtonTX.text = "ï¿½ï¿½ï¿½ï¿½ï¿½cï¿½]!";
             //OnStartDetected();
         }
     }
@@ -248,22 +255,22 @@ public class DemonsDetectedManager : MonoBehaviour
 
     public void ShowHintImage(bool isWin)
     {
-        StopAllCoroutines(); // ¨¾¤î¤W¤@¦¸ªº°Êµe¥¼µ²§ô
+        StopAllCoroutines(); // ï¿½ï¿½ï¿½ï¿½Wï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½Êµeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         StartCoroutine(HintSequence(isWin));
     }
 
     private IEnumerator HintSequence(bool isWin)
     {
-        // ¤Á´«¹Ï¤ù
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Ï¤ï¿½
         hintImage.sprite = isWin ? successSprite : failSprite;
 
-        // ªì©l³z©ú«×
+        // ï¿½ï¿½lï¿½zï¿½ï¿½ï¿½ï¿½
         Color c = hintImage.color;
         c.a = 0f;
         hintImage.color = c;
         hintImage.gameObject.SetActive(true);
 
-        // ²H¤J
+        // ï¿½Hï¿½J
         float t = 0f;
         while (t < fadeDuration)
         {
@@ -273,12 +280,12 @@ public class DemonsDetectedManager : MonoBehaviour
             yield return null;
         }
 
-        // ¦pªG¬O¥¢±Ñ ¡÷ °± 3 ¬í¦A²H¥X
+        // ï¿½pï¿½Gï¿½Oï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ 3 ï¿½ï¿½ï¿½Aï¿½Hï¿½X
         if (!isWin)
         {
             yield return new WaitForSeconds(3f);
 
-            // ²H¥X
+            // ï¿½Hï¿½X
             t = 0f;
             while (t < fadeDuration)
             {
@@ -314,7 +321,7 @@ public class DemonsDetectedManager : MonoBehaviour
 
     IEnumerator FadeImageCoroutine()
     {
-        float duration = 1f; // ²H¥X©Ò»İ¬í¼Æ
+        float duration = 1f; // ï¿½Hï¿½Xï¿½Ò»İ¬ï¿½ï¿½ï¿½
         float currentTime = 0f;
         Color color = gameOverimg.color;
         color.a = 0f;

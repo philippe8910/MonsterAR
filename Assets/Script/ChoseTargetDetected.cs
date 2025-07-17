@@ -63,4 +63,13 @@ public class ChoseTargetDetected : MonoBehaviour
         // 注意：不在這裡更新快速解鎖按鈕狀態，因為這個方法是由按鈕自己呼叫的
         Debug.Log("ChoseTargetDetected: 所有卡片已解鎖");
     }
+
+    public void LockAllCards()
+    {
+        for (int i = 0; i < targetCard.Length; i++)
+        {
+            targetCard[i].GetComponent<Button>().interactable = false;
+        }
+        Debug.Log("ChoseTargetDetected: 所有卡片已鎖定");
+    }
 }

@@ -1363,7 +1363,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &200493668
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1821,7 +1821,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &290091633
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4899,7 +4899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &631908647
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5243,7 +5243,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &659439248
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5628,6 +5628,7 @@ MonoBehaviour:
   choseOCard: 0
   choseACard: 0
   UIctrl: {fileID: 493872726}
+  showDemonButton: {fileID: 796138706}
   startDetected: {fileID: 1503331823}
   detectedButtonTX: {fileID: 0}
   settlement: {fileID: 200493669}
@@ -6004,7 +6005,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -6028,7 +6029,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 796138707}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 715736944}
+        m_TargetAssemblyTypeName: DemonsDetectedManager, Assembly-CSharp
+        m_MethodName: OnShowDemon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &796138707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6160,7 +6173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &849470649
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6265,8 +6278,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 373ee730df777814db8141995d3ccdbf, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -6587,7 +6600,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &881893853
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7375,7 +7388,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f8e00432dd002334399b507c54ccb21b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.35
   m_Pitch: 1
@@ -7900,7 +7913,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300000, guid: 3b760891a495b7e4ba25a48f26d7019d, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 7c6c5c86c83a79a4ca9b5bf242ae4cd8, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -7946,7 +7959,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6df7abd4f3fdf7247a9ddf89790a5440, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 55c570cec87ab0e4eaf0e70f4551d36f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10840,7 +10853,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1503290740
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10923,7 +10936,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -11222,7 +11235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1531731884
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11343,7 +11356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1546253850
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11785,7 +11798,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300000, guid: ce7ab77d3e32ee24297b936417b72894, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 93f9ea9ad9f626f4b8b86c216f1318c4, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -11831,7 +11844,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 24cb1e2b6a42ead428d46d92d2699f27, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c1a06503e90e44e44a9085ae4976bbfa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12973,7 +12986,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.35
   m_Pitch: 1
   Loop: 0
@@ -13354,7 +13367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1877842142
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13408,7 +13421,7 @@ RectTransform:
   m_GameObject: {fileID: 1887157856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9104118, y: 0.79324895, z: 0.79324895}
+  m_LocalScale: {x: 0.9104118, y: 0.90708923, z: 0.79324895}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1164231877}
@@ -13416,7 +13429,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -54.799965, y: -119.09999}
+  m_AnchoredPosition: {x: -54.799965, y: -117.2}
   m_SizeDelta: {x: 85.5149, y: 39.7566}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1887157858
@@ -13449,7 +13462,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300000, guid: 4bdd2e0558648224db5ff781cc5a1af1, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: e5aec501a37c76446929a6a5dc97ea0d, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -13495,7 +13508,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 994f70cc0343da144a225797422f4328, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f24270cb4fd87d4d91aa7d61ccda9f1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13554,7 +13567,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1902679024
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14139,6 +14152,7 @@ RectTransform:
   - {fileID: 895915368}
   - {fileID: 953487513}
   - {fileID: 1503331822}
+  - {fileID: 796138705}
   - {fileID: 415868513}
   - {fileID: 1738199658}
   - {fileID: 921286300}
@@ -14146,7 +14160,6 @@ RectTransform:
   - {fileID: 1164231877}
   - {fileID: 142094178}
   - {fileID: 343683941}
-  - {fileID: 796138705}
   m_Father: {fileID: 493872725}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

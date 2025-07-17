@@ -14,7 +14,8 @@ public class DemonsDetectedManager : MonoBehaviour
 
     [Header("����UI����")]
     [SerializeField] UIManager UIctrl;
-    [SerializeField] Button startDetected;
+    [SerializeField] Button showDemonButton;  // 「現身」按鍵
+    [SerializeField] Button startDetected;    // 「封印」按鍵
     [SerializeField] Text detectedButtonTX;
     [SerializeField] SettlementManager settlement;
 
@@ -31,20 +32,22 @@ public class DemonsDetectedManager : MonoBehaviour
 
     [Header("���|����")]
     [SerializeField] public int attemptsLeft;
+    private bool isDemonShown = false;  // 追蹤惡魔是否已現身
+    private bool detectionResult = false;  // 儲存偵測結果
 
     // Start is called before the first frame update
     void Start()
     {
+        // 初始狀態：現身按鍵不可用，封印按鍵不可用
+        if (showDemonButton != null) showDemonButton.interactable = false;
         startDetected.interactable = false;
+        isDemonShown = false;
+        
         attemptsLeft = 3;
         gameOverimg.gameObject.SetActive(false);
         
-        // 重置快速解鎖按鈕狀態
-        var fastUnlockButton = FindAnyObjectByType<FastUnlockButton>();
-        if (fastUnlockButton != null)
-        {
-            fastUnlockButton.ResetToLocked();
-        }
+        // 重置快速解鎖按鈕狀態（延遲執行以避免初始化問題）
+        StartCoroutine(ResetFastUnlockButtonDelayed());
     }
 
     public void FindDemons()
@@ -65,45 +68,137 @@ public class DemonsDetectedManager : MonoBehaviour
     {
         if (choseACard != 0 && choseOCard != 0 && choseRCard != 0 && findDemons)
         {
-            startDetected.interactable = true;
+            // 如果惡魔已現身，啟用封印按鍵
+            if (isDemonShown)
+            {
+                startDetected.interactable = true;
+            }
+            // 如果惡魔未現身，啟用現身按鍵
+            else if (showDemonButton != null)
+            {
+                showDemonButton.interactable = true;
+            }
             //detectedButtonTX.text = "�����c�]!";
             //OnStartDetected();
         }
     }
 
+    // 新增：現身按鍵處理（包含偵測邏輯）
+    public void OnShowDemon()
+    {
+        if (!isDemonShown)
+        {
+            // 執行偵測邏輯
+            var isArrests = false;
+            if (PlayerPrefs.GetInt("BossNumber") == PlayerPrefs.GetInt("TargetNumber"))
+                switch (PlayerPrefs.GetInt("BossNumber"))
+                {
+                    case 1:
+                        isArrests = IgnoreDetected();
+                        break;
+                    case 2:
+                        isArrests = PrejudiceDetected();
+                        break;
+                    case 3:
+                        isArrests = RejectionDetected();
+                        break;
+                    case 4:
+                        isArrests = ShameDetected();
+                        break;
+                    case 5:
+                        isArrests = OppressionDetected();
+                        break;
+                    case 6:
+                        isArrests = HelplessnessDetected();
+                        break;
+                    case 7:
+                        isArrests = BetrayalDetected();
+                        break;
+                    case 8:
+                        isArrests = LonelinessDetected();
+                        break;
+                }
+            else isArrests = false;
+            
+            if (isArrests)
+            {
+                // 偵測成功：顯示成功圖像，惡魔現身，啟用封印按鍵
+                ShowHintImage(true);
+                
+                // 觸發惡魔現身
+                var summonerDetected = FindObjectOfType<SummonerDetected>();
+                if (summonerDetected != null)
+                {
+                    summonerDetected.ShowCurrentDemon();
+                }
+                
+                // 鎖定所有卡片按鈕，防止玩家更改組合
+                var choseTargetDetected = FindObjectOfType<ChoseTargetDetected>();
+                if (choseTargetDetected != null)
+                {
+                    choseTargetDetected.LockAllCards();
+                }
+                
+                // 更新狀態
+                isDemonShown = true;
+                detectionResult = isArrests;
+                
+                // 禁用現身按鍵，啟用封印按鍵
+                if (showDemonButton != null) showDemonButton.interactable = false;
+                CheckScenPrivileges(); // 重新檢查權限，啟用封印按鍵
+                
+                Debug.Log("現身成功：偵測正確，惡魔現身，封印按鍵已啟用");
+            }
+            else
+            {
+                // 偵測失敗：顯示失敗圖像，扣血，惡魔維持黑黑狀態
+                ShowHintImage(false);
+                
+                attemptsLeft--;
+                SetHPAnimation(attemptsLeft);
+                
+                // 重置現身按鍵為可用狀態，讓玩家可以重新嘗試
+                if (showDemonButton != null) showDemonButton.interactable = false;
+                CheckScenPrivileges(); // 重新檢查權限，可能再次啟用現身按鍵
+                
+                Debug.Log($"現身失敗：偵測錯誤，扣血，剩餘生命: {attemptsLeft}");
+                
+                // 如果生命用盡，遊戲結束
+                if (attemptsLeft == 0)
+                {
+                    gameOverimg.gameObject.SetActive(true);
+                    var audio = FindAnyObjectByType<AudioManager>();
+                    audio.SetSEAudio(1);
+                    var demonsSummoner = FindObjectOfType<SummonerDetected>();
+                    demonsSummoner.OnScanTargetFX();
+                    
+                    for (int i = 0; i < demonsSummoner.theDemons.Length; i++)
+                    {
+                        if (demonsSummoner.theDemons[i] != null)
+                        {
+                            demonsSummoner.theDemons[i].SetActive(false);
+                        }
+                    }
+                    FadeInGameOverImage();
+                    
+                    StartCoroutine(GameOverSequence());
+                }
+            }
+        }
+    }
+
     public void OnStartDetected()
     {
-        var isArrests = false;
-        if (PlayerPrefs.GetInt("BossNumber") == PlayerPrefs.GetInt("TargetNumber"))
-            switch (PlayerPrefs.GetInt("BossNumber"))
-            {
-                case 1:
-                    isArrests = IgnoreDetected();
-                    break;
-                case 2:
-                    isArrests = PrejudiceDetected();
-                    break;
-                case 3:
-                    isArrests = RejectionDetected();
-                    break;
-                case 4:
-                    isArrests = ShameDetected();
-                    break;
-                case 5:
-                    isArrests = OppressionDetected();
-                    break;
-                case 6:
-                    isArrests = HelplessnessDetected();
-                    break;
-                case 7:
-                    isArrests = BetrayalDetected();
-                    break;
-                case 8:
-                    isArrests = LonelinessDetected();
-                    break;
-            }
-        else isArrests = false;
-        WinDetected(isArrests);
+        // 防止遊戲啟動時意外觸發
+        if (choseACard == 0 || choseOCard == 0 || choseRCard == 0 || !findDemons || !isDemonShown)
+        {
+            Debug.LogWarning("OnStartDetected: 遊戲狀態不符合封印條件，忽略此次調用");
+            return;
+        }
+        
+        // 直接執行封印動作，使用之前在 OnShowDemon() 中儲存的偵測結果
+        Debug.Log($"OnStartDetected: 執行封印，偵測結果: {detectionResult}");
+        WinDetected(detectionResult);
     }
 
     private async void WinDetected(bool isWin)
@@ -112,7 +207,7 @@ public class DemonsDetectedManager : MonoBehaviour
         var audio = FindAnyObjectByType<AudioManager>();
         if (isWin)
         {
-            ShowHintImage(true);
+            // 成功的UI圖像已在 OnShowDemon() 中顯示，此處只執行封印動畫
             audio.SetSEAudio(2);
             demonsSummoner.theDemons[PlayerPrefs.GetInt("TargetNumber")].GetComponent<Animator>().Play("dead");
             await Task.Delay(1000);
@@ -142,6 +237,21 @@ public class DemonsDetectedManager : MonoBehaviour
             if (attemptsLeft != 0)
             {
                 ShowHintImage(false);
+                
+                // 重置惡魔現身狀態，讓玩家可以重新嘗試
+                isDemonShown = false;
+                detectionResult = false;  // 重置偵測結果
+                startDetected.interactable = false;
+                
+                // 解鎖所有卡片按鈕，讓玩家可以重新選擇組合
+                var choseTargetDetected = FindObjectOfType<ChoseTargetDetected>();
+                if (choseTargetDetected != null)
+                {
+                    choseTargetDetected.AllLockoff();
+                }
+                
+                // 重新檢查權限，可能啟用現身按鍵
+                CheckScenPrivileges();
             }
             else
             {
@@ -333,6 +443,31 @@ public class DemonsDetectedManager : MonoBehaviour
             color.a = Mathf.Clamp01(currentTime / duration);
             gameOverimg.color = color;
             yield return null;
+        }
+    }
+    
+    private IEnumerator GameOverSequence()
+    {
+        yield return new WaitForSeconds(3f);
+        FindObjectOfType<SceneTransition>().CallTransition();
+        yield return new WaitForSeconds(1f);
+        settlement.losePage.SetActive(true);
+    }
+    
+    private IEnumerator ResetFastUnlockButtonDelayed()
+    {
+        yield return new WaitForSeconds(0.1f);
+        
+        // 查找 FastUnlockButton 組件
+        var fastUnlockButton = FindAnyObjectByType<FastUnlockButton>();
+        if (fastUnlockButton != null)
+        {
+            Debug.Log("DemonsDetectedManager: 找到 FastUnlockButton，重置為鎖定狀態");
+            fastUnlockButton.ResetToLocked();
+        }
+        else
+        {
+            Debug.LogWarning("DemonsDetectedManager: 找不到 FastUnlockButton 組件");
         }
     }
 }

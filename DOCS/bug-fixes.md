@@ -18,8 +18,8 @@
 | P004 | 增加道具頁的按鍵音效 | 音效系統 | 低 | 待處理 | 20分鐘 | AudioManager.cs, 道具頁Script |
 | P005 | 主換原本的橘色按鍵 | UI視覺 | 低 | 待處理 | 10分鐘 | Button Prefab, UI素材 |
 | P006 | 更換「快速辨識」按鍵 | UI視覺 | 低 | 已完成 | 10分鐘 | FastUnlockButton.cs, UI素材 |
-| P007 | 增加「現身」按鍵 | 功能新增 | 中 | 待處理 | 45分鐘 | SummonerDetected.cs, UI系統 |
-| P008 | 重新進入後，選擇卡片組合，先按「現身」按鍵 | 遊戲流程 | 高 | 待處理 | 1小時 | DemonsDetectedManager.cs, 狀態管理 |
+| P007 | 增加「現身」按鍵 | 功能新增 | 中 | 已完成 | 45分鐘 | SummonerDetected.cs, DemonsDetectedManager.cs |
+| P008 | 重新進入後，選擇卡片組合，先按「現身」按鍵 | 遊戲流程 | 高 | 已完成 | 1小時 | DemonsDetectedManager.cs, 狀態管理 |
 | P009 | 「封印」按鍵是錯誤的，呈現不能按的功能 | 按鍵功能 | 高 | 待處理 | 30分鐘 | UIManager.cs, Button狀態管理 |
 | P010 | 增加選擇卡牌的音效 | 音效系統 | 低 | 待處理 | 15分鐘 | AudioManager.cs, 卡牌選擇Script |
 | P011 | 目前數字的辨識度太低，所以要更換圖片 | UI視覺 | 中 | 待處理 | 20分鐘 | UI素材替換 |

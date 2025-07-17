@@ -9,7 +9,9 @@ public class AudioCtrl : MonoBehaviour
     [SerializeField] public AudioClip[] audioClips;
     public void PlaySound(int index)
     {
+
         audioSource.clip = audioClips[index];
         audioSource.Play();
+        Debug.Log($"播放音效為：{audioClips[index].name}");
     }
 }

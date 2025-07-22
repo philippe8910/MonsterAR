@@ -9,6 +9,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] public AudioCtrl soundEffect;
     [SerializeField] public AudioSource bgm;
     [SerializeField] public AudioSource btnSE;
+    [SerializeField] public AudioSource hpSE;
+    [SerializeField] public AudioSource cardSE;
     public void SetIntroductionAudio(int index)
     {
         Introduction.PlaySound(index);
@@ -28,4 +30,16 @@ public class AudioManager : MonoBehaviour
     {
         btnSE.Play();
     }
+
+    public void HPSound()
+    {
+        hpSE.Play();
+    }
+
+    public void cardSound()
+    {
+        cardSE.Play();
+    }
 }
+
+

@@ -124,7 +124,7 @@ public class DemonsDetectedManager : MonoBehaviour
             {
                 // 偵測成功：顯示成功圖像，惡魔現身，啟用封印按鍵
                 ShowHintImage(true);
-                
+                FindFirstObjectByType<AudioManager>().SetSEAudio(7);
                 // 觸發惡魔現身
                 var summonerDetected = FindObjectOfType<SummonerDetected>();
                 if (summonerDetected != null)
@@ -153,7 +153,8 @@ public class DemonsDetectedManager : MonoBehaviour
             {
                 // 偵測失敗：顯示失敗圖像，扣血，惡魔維持黑黑狀態
                 ShowHintImage(false);
-                
+                FindFirstObjectByType<AudioManager>().SetSEAudio(6);
+                FindFirstObjectByType<AudioManager>().HPSound();
                 attemptsLeft--;
                 SetHPAnimation(attemptsLeft);
                 

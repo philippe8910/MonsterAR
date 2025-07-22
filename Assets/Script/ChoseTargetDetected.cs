@@ -30,6 +30,7 @@ public class ChoseTargetDetected : MonoBehaviour
 
     public void OnChoseTargetCard(int cardIndex)
     {
+        FindFirstObjectByType<AudioManager>().cardSound();
         Targetindex[nowType] = cardIndex;
         targetCard[nowType].ChangeSprite(cardIndex);
         SyncIndex();

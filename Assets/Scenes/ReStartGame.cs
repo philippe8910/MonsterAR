@@ -9,10 +9,10 @@ public class ReStartGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        OnReset();
+        //OnReset();
     }
 
-    private async void OnReset()
+    public async void OnReset()
     {
         SetAudio();
         PlayerPrefs.SetInt("ResetLevel", 0);

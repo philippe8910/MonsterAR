@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
   <Tracking>
+    <ImageTarget name="solitariuscard_vuforiaenhanced" size="0.100000 0.140423" />
+    <ImageTarget name="desolatuscard_vuforiaenhanced" size="0.100000 0.140423" />
+    <ImageTarget name="treachuscard_fixed" size="0.100000 0.140555" />
+    <ImageTarget name="rejectuscard_fixed" size="0.100000 0.140608" />
+    <ImageTarget name="oppressioncard_fixed" size="0.100000 0.140555" />
+    <ImageTarget name="neglectorcard_fixed" size="0.100000 0.140423" />
+    <ImageTarget name="humiliacard_fixed" size="0.100000 0.140741" />
+    <ImageTarget name="biasuscard_fixed" size="0.100000 0.140555" />
     <ImageTarget name="argameocard_boosted" size="1.000000 1.334180" />
     <ImageTarget name="argamercard_fixed" size="1.000000 1.334180" />
     <ImageTarget name="argameocard" size="1.000000 1.334180" />

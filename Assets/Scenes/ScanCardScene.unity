@@ -2483,7 +2483,7 @@ RectTransform:
   m_GameObject: {fileID: 343683940}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1856, y: 1.1856, z: 1.1856}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1602104491}
@@ -2492,7 +2492,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.4867, y: -15.219}
+  m_AnchoredPosition: {x: 2.5, y: -83.7}
   m_SizeDelta: {x: 326.7484, y: 113.3578}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &343683942
@@ -5904,11 +5904,11 @@ MonoBehaviour:
   - {fileID: 7768597690072773365, guid: 26a00a1b1e393bd4590bce2351c0647d, type: 3}
   - {fileID: 5349720155614191607, guid: 94f9e2f10774e244a89a87640a324d91, type: 3}
   attemptsLeft: 0
-  uiElementsToHideOnStageEnd:
+  uiElementsToHideOnWin:
   - {fileID: 1164231876}
-  - {fileID: 1738199657}
   - {fileID: 1503331821}
   - {fileID: 796138704}
+  - {fileID: 1738199657}
   hpUI: {fileID: 921286299}
   settingsUI: {fileID: 286690737}
 --- !u!4 &715736945
@@ -6858,7 +6858,6 @@ GameObject:
   - component: {fileID: 881893853}
   - component: {fileID: 881893855}
   - component: {fileID: 881893854}
-  - component: {fileID: 881893856}
   m_Layer: 5
   m_Name: watermark
   m_TagString: Untagged
@@ -6924,18 +6923,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881893852}
   m_CullTransparentMesh: 1
---- !u!114 &881893856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 881893852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb4d62b6b9e48444f9ecd322bfe142ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &895915367
 GameObject:
   m_ObjectHideFlags: 0
@@ -12345,7 +12332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.14901961}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.42745098}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

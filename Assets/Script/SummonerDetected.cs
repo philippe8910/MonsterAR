@@ -12,6 +12,8 @@ public class SummonerDetected : MonoBehaviour
 
     private ObserverBehaviour observer; // 追蹤用
     private Status previousStatus = Status.NO_POSE;
+    [SerializeField] private bool isExhibits;
+    [SerializeField] private int exhibitsIndex;
 
     [SerializeField] private Material[] demonMats;
     private Color[] originalColors; // 存儲原始顏色
@@ -124,7 +126,15 @@ public class SummonerDetected : MonoBehaviour
 
     public void OnScanTarget()
     {
-        int target = PlayerPrefs.GetInt("TargetNumber", 0);
+        int target = 0;
+        if (isExhibits)
+        {
+            target = exhibitsIndex;
+        }
+        else
+        {
+            target = PlayerPrefs.GetInt("TargetNumber", 0);
+        }
         FindObjectOfType<DemonsDetectedManager>().FindDemons();
         theDemons[target].SetActive(true);
         
@@ -268,8 +278,8 @@ public class SummonerDetected : MonoBehaviour
         float duration = 1.5f;
         float t = 0f;
         Color original = mat.color;
-        float maxWhiteBlend = 0.4f;
-        float maxEmission = 0.4f;
+        float maxWhiteBlend = 0.65f;    // 提高白色混合比例從0.4到0.65
+        float maxEmission = 0.25f;      // 降低發光強度從0.4到0.25，避免過曝
 
         Color targetWhite = Color.Lerp(original, Color.white, maxWhiteBlend);
         mat.EnableKeyword("_EMISSION");
@@ -281,7 +291,7 @@ public class SummonerDetected : MonoBehaviour
             // 淡入至目標白度
             mat.color = Color.Lerp(original, targetWhite, t);
 
-            // 柔和發光
+            // 柔和發光（降低強度以保持輪廓）
             mat.SetColor("_EmissionColor", Color.white * (t * maxEmission));
 
             yield return null;

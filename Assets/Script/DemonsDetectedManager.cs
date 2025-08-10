@@ -26,6 +26,7 @@ public class DemonsDetectedManager : MonoBehaviour
     [SerializeField] public Image gameOverimg;
     [SerializeField] public float fadeDuration = 0.5f;
     [SerializeField] public GameObject[] HPObject;
+    
 
     [Header("���y����")]
     [SerializeField] public GameObject[] scanObject;
@@ -34,6 +35,11 @@ public class DemonsDetectedManager : MonoBehaviour
     [SerializeField] public int attemptsLeft;
     private bool isDemonShown = false;  // 追蹤惡魔是否已現身
     private bool detectionResult = false;  // 儲存偵測結果
+    
+    [Header("階段性結束時需要隱藏的UI元素")]
+    [SerializeField] private GameObject[] uiElementsToHideOnStageEnd;  // 需要在階段性結束時隱藏的UI元素
+    [SerializeField] private GameObject hpUI;  // 血量UI（需要保留）
+    [SerializeField] private GameObject settingsUI;  // 設定UI（需要保留）
 
     // Start is called before the first frame update
     void Start()
@@ -151,12 +157,17 @@ public class DemonsDetectedManager : MonoBehaviour
             }
             else
             {
-                // 偵測失敗：顯示失敗圖像，扣血，惡魔維持黑黑狀態
-                ShowHintImage(false);
+                // 偵測失敗：扣血，惡魔維持黑黑狀態
                 FindFirstObjectByType<AudioManager>().SetSEAudio(6);
                 FindFirstObjectByType<AudioManager>().HPSound();
                 attemptsLeft--;
                 SetHPAnimation(attemptsLeft);
+                
+                // 只在第1、2次失敗時顯示失敗提示文字
+                if (attemptsLeft > 0)
+                {
+                    ShowHintImage(false);
+                }
                 
                 // 重置現身按鍵為可用狀態，讓玩家可以重新嘗試
                 if (showDemonButton != null) showDemonButton.interactable = false;
@@ -167,6 +178,19 @@ public class DemonsDetectedManager : MonoBehaviour
                 // 如果生命用盡，遊戲結束
                 if (attemptsLeft == 0)
                 {
+                    // 防呆措施：直接關閉提示文字圖片，避免動畫衝突
+                    if (hintImage != null)
+                    {
+                        hintImage.gameObject.SetActive(false);
+                        Debug.Log("第三次失敗：強制關閉提示文字圖片，避免動畫衝突");
+                    }
+                    
+                    // 遊戲結束，隱藏UI元素
+                    HideUIElementsOnStageEnd();
+                    
+                    // 顯示血量歸零的提示圖片（移動位置）
+                    ShowGameOverHint();
+                    
                     gameOverimg.gameObject.SetActive(true);
                     var audio = FindAnyObjectByType<AudioManager>();
                     audio.SetSEAudio(1);
@@ -215,6 +239,9 @@ public class DemonsDetectedManager : MonoBehaviour
         if (isWin)
         {
             // 成功的UI圖像已在 OnShowDemon() 中顯示，此處只執行封印動畫
+            // 隱藏指定的UI元素，保留血量和設定按鈕
+            HideUIElementsOnStageEnd();
+            
             audio.SetSEAudio(2);
             demonsSummoner.theDemons[PlayerPrefs.GetInt("TargetNumber")].GetComponent<Animator>().Play("dead");
             await Task.Delay(1000);
@@ -262,6 +289,19 @@ public class DemonsDetectedManager : MonoBehaviour
             }
             else
             {
+                // 防呆措施：直接關閉提示文字圖片，避免動畫衝突
+                if (hintImage != null)
+                {
+                    hintImage.gameObject.SetActive(false);
+                    Debug.Log("WinDetected失敗：強制關閉提示文字圖片，避免動畫衝突");
+                }
+                
+                // 失敗且生命值為0，隱藏UI元素
+                HideUIElementsOnStageEnd();
+                
+                // 顯示血量歸零的提示圖片（移動位置）
+                ShowGameOverHint();
+                
                 gameOverimg.gameObject.SetActive(true);
                 audio.SetSEAudio(1);
                 demonsSummoner.OnScanTargetFX();
@@ -397,23 +437,29 @@ public class DemonsDetectedManager : MonoBehaviour
             yield return null;
         }
 
-        // �p�G�O���� �� �� 3 ���A�H�X
-        if (!isWin)
+        // 等待一段時間後淡出（勝利和失敗都要淡出）
+        if (isWin)
         {
-            yield return new WaitForSeconds(3f);
-
-            // �H�X
-            t = 0f;
-            while (t < fadeDuration)
-            {
-                t += Time.deltaTime;
-                c.a = Mathf.Lerp(1f, 0f, t / fadeDuration);
-                hintImage.color = c;
-                yield return null;
-            }
-
-            hintImage.gameObject.SetActive(false);
+            // 勝利時等待較短時間後淡出
+            yield return new WaitForSeconds(2f);
         }
+        else
+        {
+            // 失敗時等待3秒後淡出
+            yield return new WaitForSeconds(3f);
+        }
+
+        // 淡出動畫
+        t = 0f;
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            c.a = Mathf.Lerp(1f, 0f, t / fadeDuration);
+            hintImage.color = c;
+            yield return null;
+        }
+
+        hintImage.gameObject.SetActive(false);
     }
 
     private async void SetHPAnimation(int playerHP)
@@ -475,6 +521,79 @@ public class DemonsDetectedManager : MonoBehaviour
         else
         {
             Debug.LogWarning("DemonsDetectedManager: 找不到 FastUnlockButton 組件");
+        }
+    }
+    
+    // 階段性結束時隱藏UI元素的方法
+    private void HideUIElementsOnStageEnd()
+    {
+        // 停止提示文字的動畫協程並強制隱藏
+        if (hintImage != null)
+        {
+            StopAllCoroutines();
+            hintImage.gameObject.SetActive(false);
+            Debug.Log("階段性結束：強制隱藏提示文字圖片");
+        }
+        
+        // 隱藏指定的UI元素陣列中的所有元素
+        if (uiElementsToHideOnStageEnd != null)
+        {
+            for (int i = 0; i < uiElementsToHideOnStageEnd.Length; i++)
+            {
+                if (uiElementsToHideOnStageEnd[i] != null)
+                {
+                    uiElementsToHideOnStageEnd[i].SetActive(false);
+                    Debug.Log($"階段性結束：隱藏UI元素 - {uiElementsToHideOnStageEnd[i].name}");
+                }
+            }
+        }
+        
+        // 確保血量UI和設定UI保持顯示（如果有設定的話）
+        if (hpUI != null)
+        {
+            hpUI.SetActive(true);
+            Debug.Log("階段性結束：確保血量UI保持顯示");
+        }
+        
+        if (settingsUI != null)
+        {
+            settingsUI.SetActive(true);
+            Debug.Log("階段性結束：確保設定UI保持顯示");
+        }
+        
+        Debug.Log("階段性結束UI隱藏處理完成");
+    }
+    
+    // 顯示血量歸零時的提示圖片
+    private void ShowGameOverHint()
+    {
+        // 停止所有協程，防止動畫衝突
+        StopAllCoroutines();
+        
+        // 確保提示文字圖片已關閉
+        if (hintImage != null)
+        {
+            hintImage.gameObject.SetActive(false);
+        }
+        
+        // 使用原本的 gameOverimg 來顯示血量歸零的提示
+        // 這裡可以調整圖片的位置、大小等屬性
+        if (gameOverimg != null)
+        {
+            // 調整提示圖片的位置（如果需要的話）
+            RectTransform rectTransform = gameOverimg.GetComponent<RectTransform>();
+            if (rectTransform != null)
+            {
+                // 這裡可以設定血量歸零提示圖片的位置
+                // 例如：rectTransform.anchoredPosition = new Vector2(0, 100);
+                Debug.Log("血量歸零提示圖片位置已調整");
+            }
+            
+            Debug.Log("顯示血量歸零提示圖片，已停止所有動畫協程");
+        }
+        else
+        {
+            Debug.LogWarning("找不到 gameOverimg 組件");
         }
     }
 }

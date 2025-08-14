@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     public RectTransform MainScreen;
     public Button[] StartBtn;
     public Button QuitBtn;
+    public Button ExhibitsBtn;  // 展覽模式按鈕
     private Vector3 mainScreenOriginalPos;
     public int bossIndex = -1;
 
@@ -94,6 +95,11 @@ public class UIManager : MonoBehaviour
         if (QuitBtn != null)
         {
             QuitBtn.onClick.AddListener(QuitGame);
+        }
+
+        if (ExhibitsBtn != null)
+        {
+            ExhibitsBtn.onClick.AddListener(OnExhibits);
         }
 
         if (IntroStartBtn != null)
@@ -296,5 +302,13 @@ public class UIManager : MonoBehaviour
         {
             HomeSetUI[i].gameObject.SetActive(isDisplay);
         }
+    }
+
+    public async void OnExhibits()
+    {
+        FindObjectOfType<SceneTransition>().CallTransition();
+        audioManager.ButtonClickSound();
+        await Task.Delay(1300);
+        SceneManager.LoadScene("ScanCardScene");
     }
 }

@@ -6,20 +6,20 @@ using UnityEngine.UI;
 
 public class DemonsDetectedManager : MonoBehaviour
 {
-    [Header("�˴��ϰ�")]
+    [Header("選擇參數")]
     [SerializeField] private bool findDemons;
     [SerializeField] public int choseRCard;
     [SerializeField] public int choseOCard;
     [SerializeField] public int choseACard;
 
-    [Header("����UI����")]
+    [Header("遊戲UI元件")]
     [SerializeField] UIManager UIctrl;
     [SerializeField] Button showDemonButton;  // 「現身」按鍵
     [SerializeField] Button startDetected;    // 「封印」按鍵
     [SerializeField] Text detectedButtonTX;
     [SerializeField] SettlementManager settlement;
 
-    [Header("���ܹϤ�����")]
+    [Header("結果圖像設定")]
     [SerializeField] public Image hintImage;
     [SerializeField] public Sprite successSprite;
     [SerializeField] public Sprite failSprite;
@@ -28,14 +28,16 @@ public class DemonsDetectedManager : MonoBehaviour
     [SerializeField] public GameObject[] HPObject;
     
 
-    [Header("���y����")]
-    [SerializeField] public GameObject[] scanObject;
+    [Header("掃描物件")]
+    [SerializeField] public GameObject[] scanObject;        // 一般遊戲模式的掃描物件
+    [SerializeField] public GameObject[] exhibitsScanObject; // 圖鑑模式的掃描物件
 
-    [Header("���|����")]
+    [Header("遊戲狀態")]
     [SerializeField] public int attemptsLeft;
     private bool isDemonShown = false;  // 追蹤惡魔是否已現身
     private bool detectionResult = false;  // 儲存偵測結果
-    
+    [SerializeField] private bool isExhibits;  // 是否為展覽模式
+
     [Header("階段性結束時需要隱藏的UI元素")]
     [SerializeField] private GameObject[] uiElementsToHideOnStageEnd;  // 需要在階段性結束時隱藏的UI元素
     [SerializeField] private GameObject hpUI;  // 血量UI（需要保留）
@@ -51,6 +53,12 @@ public class DemonsDetectedManager : MonoBehaviour
         
         attemptsLeft = 3;
         gameOverimg.gameObject.SetActive(false);
+        
+        // 如果是觀賞模式，直接生成掃描物件
+        if (isExhibits)
+        {
+            ScanObjectCtrl(true);
+        }
         
         // 重置快速解鎖按鈕狀態（延遲執行以避免初始化問題）
         StartCoroutine(ResetFastUnlockButtonDelayed());
@@ -325,14 +333,16 @@ public class DemonsDetectedManager : MonoBehaviour
 
     public void ScanObjectCtrl(bool enable)
     {
-        
         if (enable)
         {
-            for (int i = 0; i < scanObject.Length; i++)
+            // 根據 isExhibits 決定使用哪組掃描物件陣列
+            GameObject[] targetScanObjects = isExhibits ? exhibitsScanObject : scanObject;
+            
+            for (int i = 0; i < targetScanObjects.Length; i++)
             {
-                if (scanObject[i] != null)
+                if (targetScanObjects[i] != null)
                 {
-                   Instantiate(scanObject[i], transform);
+                   Instantiate(targetScanObjects[i], transform);
                 }
             }
         }

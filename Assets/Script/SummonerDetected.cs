@@ -139,7 +139,11 @@ public class SummonerDetected : MonoBehaviour
         theDemons[target].SetActive(true);
         
         // 新增：惡魔出現時立刻設定為暗黑狀態（在煙霧前）
-        SetDarkState(target);
+        // 但如果是觀賞模式，則保持原本模樣
+        if (!isExhibits)
+        {
+            SetDarkState(target);
+        }
         
         OnScanTargetFX();
     }
@@ -147,7 +151,22 @@ public class SummonerDetected : MonoBehaviour
     public void OnLostTarget()
     {
         Debug.Log("LOST");
-        RestDemonsObject();
+        
+        if (isExhibits)
+        {
+            // 觀賞模式：只隱藏當前這個AR卡片對應的惡魔
+            int target = exhibitsIndex;
+            if (target >= 0 && target < theDemons.Length && theDemons[target] != null)
+            {
+                theDemons[target].SetActive(false);
+                Debug.Log($"觀賞模式：隱藏惡魔 {target}");
+            }
+        }
+        else
+        {
+            // 一般遊戲模式：隱藏所有惡魔（原本邏輯）
+            RestDemonsObject();
+        }
     }
 
     public void RefreshDemonView()

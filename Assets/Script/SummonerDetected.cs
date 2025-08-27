@@ -283,10 +283,13 @@ public class SummonerDetected : MonoBehaviour
             Debug.Log("惡魔已現身成功，忽略變黑請求");
             return;
         }
-        
-        int target = PlayerPrefs.GetInt("TargetNumber", 0);
-        SetDarkState(target);
-        Debug.Log($"對外接口：惡魔 {target} 設定為暗黑狀態");
+
+        if (!isExhibits)
+        {
+            int target = PlayerPrefs.GetInt("TargetNumber", 0);
+            SetDarkState(target);
+            Debug.Log($"對外接口：惡魔 {target} 設定為暗黑狀態");
+        }
     }
 
     // 已移除：延遲恢復正常狀態的協程（改為立即恢復）

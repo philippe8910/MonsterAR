@@ -50,7 +50,8 @@ public class ChoseTargetDetected : MonoBehaviour
 
     public void OnButtonLockoff(int offLockIndex)
     {
-        targetCard[offLockIndex].GetComponent<Button>().interactable = true;
+        targetCard[offLockIndex].GetComponent<ARButtonController>().EnableButton();
+        targetCard[offLockIndex].GetComponent<ARButtonController>().isFind = true;
         //FindAnyObjectByType<DemonsDetectedManager>().OnStartDetected();
     }
 
@@ -58,7 +59,7 @@ public class ChoseTargetDetected : MonoBehaviour
     {
         for (int i = 0; i < targetCard.Length; i++)
         {
-            targetCard[i].GetComponent<Button>().interactable = true;
+            targetCard[i].GetComponent<ARButtonController>().EnableButton();
         }
         
         // 注意：不在這裡更新快速解鎖按鈕狀態，因為這個方法是由按鈕自己呼叫的
@@ -69,7 +70,7 @@ public class ChoseTargetDetected : MonoBehaviour
     {
         for (int i = 0; i < targetCard.Length; i++)
         {
-            targetCard[i].GetComponent<Button>().interactable = false;
+            targetCard[i].GetComponent<ARButtonController>().ButtonDetected();
         }
         Debug.Log("ChoseTargetDetected: 所有卡片已鎖定");
     }

@@ -78,6 +78,8 @@ public class FastUnlockButton : MonoBehaviour
         }
         else
         {
+            SetUnlockState(false);
+            choseTargetDetected.LockAllCards();
             Debug.Log("FastUnlockButton: 已經解鎖，無需再次操作");
         }
     }

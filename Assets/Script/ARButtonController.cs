@@ -8,6 +8,7 @@ public class ARButtonController : MonoBehaviour
     [Header("按鈕本體")]
     [SerializeField] private Button targetButton;
     [SerializeField] public int CardTypeIndex;
+    [SerializeField] public bool isFind;
 
     [Header("點擊後要啟動的物件")]
     [SerializeField] private GameObject objectToActivate;
@@ -42,7 +43,6 @@ public class ARButtonController : MonoBehaviour
     public void EnableButton()
     {
         targetButton.interactable = true;
-
     }
 
     //功能 2：關閉按鈕
@@ -50,6 +50,18 @@ public class ARButtonController : MonoBehaviour
     {
         targetButton.interactable = false;
         ChangeSprite(0);
+    }
+
+    public void ButtonDetected()
+    {
+        if (isFind)
+        {
+            EnableButton();
+        }
+        else
+        {
+            DisableButton();
+        }
     }
 
     //功能 4：更換圖片
@@ -68,3 +80,4 @@ public class ARButtonController : MonoBehaviour
         }
     }
 }
+

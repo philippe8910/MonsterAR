@@ -16,6 +16,7 @@ public class DemonsDetectedManager : MonoBehaviour
     [SerializeField] UIManager UIctrl;
     [SerializeField] Button showDemonButton;  // 「現身」按鍵
     [SerializeField] Button startDetected;    // 「封印」按鍵
+    [SerializeField] Button lockBtn;
     [SerializeField] Text detectedButtonTX;
     [SerializeField] SettlementManager settlement;
 
@@ -156,9 +157,13 @@ public class DemonsDetectedManager : MonoBehaviour
                 // 更新狀態
                 isDemonShown = true;
                 detectionResult = isArrests;
-                
+
                 // 禁用現身按鍵，啟用封印按鍵
-                if (showDemonButton != null) showDemonButton.interactable = false;
+                if (showDemonButton != null)
+                {
+                    showDemonButton.interactable = false;
+                    lockBtn.interactable = false;
+                }
                 CheckScenPrivileges(); // 重新檢查權限，啟用封印按鍵
                 
                 Debug.Log("現身成功：偵測正確，惡魔現身，封印按鍵已啟用");

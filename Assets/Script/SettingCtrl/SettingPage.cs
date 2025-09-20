@@ -14,8 +14,8 @@ public class SettingPage : MonoBehaviour
     async void Start()
     {
         CheckAudio();
-        Debug.Log($" BGM: { PlayerPrefs.GetInt("BGMSet")}");
-        Debug.Log($" SE: {PlayerPrefs.GetInt("SESet")}");
+        //Debug.Log($" BGM: { PlayerPrefs.GetInt("BGMSet")}");
+        //Debug.Log($" SE: {PlayerPrefs.GetInt("SESet")}");
         await Task.Delay(200);
         ClosePage();
     }

@@ -100,7 +100,7 @@ public class SummonerDetected : MonoBehaviour
                 if (demon != null && demon.activeInHierarchy)
                 {
                     demon.transform.Rotate(Vector3.up, -horizontal * rotationSpeed * Time.deltaTime);
-                    Debug.Log("轉動中：" + horizontal);
+                    //Debug.Log("轉動中：" + horizontal);
                 }
             }
         }
@@ -150,7 +150,7 @@ public class SummonerDetected : MonoBehaviour
 
     public void OnLostTarget()
     {
-        Debug.Log("LOST");
+        //Debug.Log("LOST");
         
         if (isExhibits)
         {
@@ -159,7 +159,7 @@ public class SummonerDetected : MonoBehaviour
             if (target >= 0 && target < theDemons.Length && theDemons[target] != null)
             {
                 theDemons[target].SetActive(false);
-                Debug.Log($"觀賞模式：隱藏惡魔 {target}");
+                //Debug.Log($"觀賞模式：隱藏惡魔 {target}");
             }
         }
         else
@@ -186,7 +186,7 @@ public class SummonerDetected : MonoBehaviour
 
     public void OnScanTargetFX()
     {
-        Debug.Log("FX");
+        //Debug.Log("FX");
         if (scanFxPrefab == null || spawnPoint == null) return;
 
         GameObject fx = Instantiate(scanFxPrefab, spawnPoint.position, spawnPoint.rotation, spawnPoint);
@@ -196,7 +196,7 @@ public class SummonerDetected : MonoBehaviour
 
     public void OnWinFX()
     {
-        Debug.Log("FX");
+        //Debug.Log("FX");
         if (winFxPrefab == null || spawnPoint == null) return;
 
         GameObject fx = Instantiate(winFxPrefab, spawnPoint.position, spawnPoint.rotation, spawnPoint);
@@ -216,7 +216,7 @@ public class SummonerDetected : MonoBehaviour
     // 新增：讓第 x 個 demon 進入暗黑狀態
     public void SetDarkState(int index)
     {
-        Debug.Log($"SetDarkState 被調用，index: {index}");
+        //Debug.Log($"SetDarkState 被調用，index: {index}");
         
         if (index >= 0 && index < theDemons.Length && demonMats[index] != null)
         {
@@ -238,11 +238,11 @@ public class SummonerDetected : MonoBehaviour
             // 關閉發光效果
             mat.SetColor("_EmissionColor", Color.black);
             
-            Debug.Log($"惡魔 {index} 進入暗黑狀態：原始 {original} → 暗黑 {targetDark}");
+            //Debug.Log($"惡魔 {index} 進入暗黑狀態：原始 {original} → 暗黑 {targetDark}");
         }
         else
         {
-            Debug.LogError($"SetDarkState 失敗：index={index}, 範圍={theDemons.Length}, mat存在={demonMats[index] != null}");
+            //Debug.LogError($"SetDarkState 失敗：index={index}, 範圍={theDemons.Length}, mat存在={demonMats[index] != null}");
         }
     }
 
@@ -261,7 +261,7 @@ public class SummonerDetected : MonoBehaviour
             // 播放煙霧特效做為障眼法
             OnScanTargetFX();
             
-            Debug.Log($"惡魔 {index} 立刻恢復正常狀態，煙霧開始");
+            //Debug.Log($"惡魔 {index} 立刻恢復正常狀態，煙霧開始");
         }
     }
 
@@ -270,7 +270,7 @@ public class SummonerDetected : MonoBehaviour
     {
         int target = PlayerPrefs.GetInt("TargetNumber", 0);
         RestoreNormalState(target);
-        Debug.Log($"惡魔 {target} 現身");
+        //Debug.Log($"惡魔 {target} 現身");
     }
 
     // 新增：對外接口 - 直接設定當前惡魔為黑色狀態（可綁定到AR外掛）
@@ -280,7 +280,7 @@ public class SummonerDetected : MonoBehaviour
         var demonsManager = FindObjectOfType<DemonsDetectedManager>();
         if (demonsManager != null && demonsManager.IsDemonShown())
         {
-            Debug.Log("惡魔已現身成功，忽略變黑請求");
+            //Debug.Log("惡魔已現身成功，忽略變黑請求");
             return;
         }
 
@@ -288,7 +288,7 @@ public class SummonerDetected : MonoBehaviour
         {
             int target = PlayerPrefs.GetInt("TargetNumber", 0);
             SetDarkState(target);
-            Debug.Log($"對外接口：惡魔 {target} 設定為暗黑狀態");
+            //Debug.Log($"對外接口：惡魔 {target} 設定為暗黑狀態");
         }
     }
 

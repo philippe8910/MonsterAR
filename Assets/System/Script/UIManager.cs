@@ -140,7 +140,7 @@ public class UIManager : MonoBehaviour
             ).SetEase(Ease.OutQuad);
         }
         PlayerPrefs.SetInt("BossNumber", bossIndex);
-        Debug.Log($"啟動遊戲，Boss為：{SetBossName(bossIndex)},代碼為{PlayerPrefs.GetInt("BossNumber")}");
+        //Debug.Log($"啟動遊戲，Boss為：{SetBossName(bossIndex)},代碼為{PlayerPrefs.GetInt("BossNumber")}");
         
     }
 
@@ -167,7 +167,7 @@ public class UIManager : MonoBehaviour
         PlayerPrefs.SetInt("TargetNumber", targetIndex);
         theTargetImage.sprite = TargetDemon[PlayerPrefs.GetInt("TargetNumber")];
         theTargetText.sprite = TargetDemonText[PlayerPrefs.GetInt("TargetNumber")];
-        Debug.Log($"選擇目標為：{SetBossName(targetIndex)},代碼為{PlayerPrefs.GetInt("TargetNumber")}");
+        //Debug.Log($"選擇目標為：{SetBossName(targetIndex)},代碼為{PlayerPrefs.GetInt("TargetNumber")}");
         audioManager.SetIntroductionAudio(PlayerPrefs.GetInt("TargetNumber"));
     }
 
@@ -282,7 +282,7 @@ public class UIManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("退出遊戲");
+        //Debug.Log("退出遊戲");
         audioManager.ButtonClickSound();
         Application.Quit();
     }

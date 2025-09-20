@@ -7,7 +7,7 @@ public class PayDetected : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log($"PayDetected Start {PlayerPrefs.GetInt("isPay")}");
+        //Debug.Log($"PayDetected Start {PlayerPrefs.GetInt("isPay")}");
         if (PlayerPrefs.GetInt("isPay") == 1)
         {
             this.gameObject.SetActive(false);

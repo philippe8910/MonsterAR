@@ -32,9 +32,9 @@ public class FastUnlockButton : MonoBehaviour
         choseTargetDetected = FindAnyObjectByType<ChoseTargetDetected>();
         
         // 調試資訊
-        Debug.Log("FastUnlockButton: 初始化完成");
-        Debug.Log($"FastUnlockButton: Button={unlockButton != null}, Image={buttonImage != null}");
-        Debug.Log($"FastUnlockButton: ChoseTargetDetected={choseTargetDetected != null}");
+        //Debug.Log("FastUnlockButton: 初始化完成");
+        //Debug.Log($"FastUnlockButton: Button={unlockButton != null}, Image={buttonImage != null}");
+        //Debug.Log($"FastUnlockButton: ChoseTargetDetected={choseTargetDetected != null}");
     }
     
     private void Start()
@@ -45,12 +45,12 @@ public class FastUnlockButton : MonoBehaviour
             // 清除現有的監聽器以避免重複
             unlockButton.onClick.RemoveAllListeners();
             unlockButton.onClick.AddListener(OnUnlockButtonClicked);
-            Debug.Log("FastUnlockButton: 按鈕點擊事件已設定");
+            //Debug.Log("FastUnlockButton: 按鈕點擊事件已設定");
         }
         
         // 初始化按鈕狀態
         UpdateButtonState();
-        Debug.Log($"FastUnlockButton: 初始狀態 isUnlocked={isUnlocked}");
+        //Debug.Log($"FastUnlockButton: 初始狀態 isUnlocked={isUnlocked}");
     }
     
     /// <summary>
@@ -58,8 +58,8 @@ public class FastUnlockButton : MonoBehaviour
     /// </summary>
     private void OnUnlockButtonClicked()
     {
-        Debug.Log("FastUnlockButton: 按鈕被點擊");
-        Debug.Log($"FastUnlockButton: 點擊前狀態 isUnlocked={isUnlocked}");
+        //Debug.Log("FastUnlockButton: 按鈕被點擊");
+        //Debug.Log($"FastUnlockButton: 點擊前狀態 isUnlocked={isUnlocked}");
         
         // 如果尚未解鎖，執行解鎖
         if (!isUnlocked)
@@ -67,12 +67,12 @@ public class FastUnlockButton : MonoBehaviour
             // 設定為解鎖狀態
             SetUnlockState(true);
             
-            Debug.Log($"FastUnlockButton: 解鎖後狀態 isUnlocked={isUnlocked}");
+            //Debug.Log($"FastUnlockButton: 解鎖後狀態 isUnlocked={isUnlocked}");
             
             // 執行解鎖所有卡片
             if (choseTargetDetected != null)
             {
-                Debug.Log("FastUnlockButton: 執行 AllLockoff");
+                //Debug.Log("FastUnlockButton: 執行 AllLockoff");
                 choseTargetDetected.AllLockoff();
             }
         }
@@ -80,7 +80,7 @@ public class FastUnlockButton : MonoBehaviour
         {
             SetUnlockState(false);
             choseTargetDetected.LockAllCards();
-            Debug.Log("FastUnlockButton: 已經解鎖，無需再次操作");
+            //Debug.Log("FastUnlockButton: 已經解鎖，無需再次操作");
         }
     }
     
@@ -94,7 +94,7 @@ public class FastUnlockButton : MonoBehaviour
         if (!isUnlocked)
         {
             isUnlocked = true;
-            Debug.Log($"FastUnlockButton: 狀態切換到 isUnlocked={isUnlocked}");
+            //Debug.Log($"FastUnlockButton: 狀態切換到 isUnlocked={isUnlocked}");
             UpdateButtonState();
         }
     }
@@ -114,7 +114,7 @@ public class FastUnlockButton : MonoBehaviour
     /// </summary>
     private void UpdateButtonState()
     {
-        Debug.Log($"FastUnlockButton: 更新按鈕狀態 isUnlocked={isUnlocked}");
+        //Debug.Log($"FastUnlockButton: 更新按鈕狀態 isUnlocked={isUnlocked}");
         
         if (buttonImage != null)
         {
@@ -122,17 +122,17 @@ public class FastUnlockButton : MonoBehaviour
             if (isUnlocked)
             {
                 buttonImage.sprite = unlockedSprite;
-                Debug.Log("FastUnlockButton: 設定為解鎖圖片");
+                //Debug.Log("FastUnlockButton: 設定為解鎖圖片");
             }
             else
             {
                 buttonImage.sprite = lockedSprite;
-                Debug.Log("FastUnlockButton: 設定為鎖定圖片");
+                //Debug.Log("FastUnlockButton: 設定為鎖定圖片");
             }
         }
         else
         {
-            Debug.LogError("FastUnlockButton: buttonImage 為 null");
+            //Debug.LogError("FastUnlockButton: buttonImage 為 null");
         }
         
         // 可選：根據狀態調整按鈕的可點擊性

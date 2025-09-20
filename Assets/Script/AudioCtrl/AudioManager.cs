@@ -40,6 +40,19 @@ public class AudioManager : MonoBehaviour
     {
         cardSE.Play();
     }
+
+    public int WinSEDetected()
+    {
+        var resultIndex = PlayerPrefs.GetInt("WinIndex") switch
+        {
+            1 => 4,
+            2 => 5,
+            3 => 6,
+            _ => 7,
+        };
+
+        return resultIndex;
+    }
 }
 
 

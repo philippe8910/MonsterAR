@@ -166,7 +166,7 @@ public class DemonsDetectedManager : MonoBehaviour
                 }
                 CheckScenPrivileges(); // 重新檢查權限，啟用封印按鍵
                 
-                Debug.Log("現身成功：偵測正確，惡魔現身，封印按鍵已啟用");
+                //Debug.Log("現身成功：偵測正確，惡魔現身，封印按鍵已啟用");
             }
             else
             {
@@ -186,7 +186,7 @@ public class DemonsDetectedManager : MonoBehaviour
                 if (showDemonButton != null) showDemonButton.interactable = false;
                 CheckScenPrivileges(); // 重新檢查權限，可能再次啟用現身按鍵
                 
-                Debug.Log($"現身失敗：偵測錯誤，扣血，剩餘生命: {attemptsLeft}");
+                //Debug.Log($"現身失敗：偵測錯誤，扣血，剩餘生命: {attemptsLeft}");
                 
                 // 如果生命用盡，遊戲結束
                 if (attemptsLeft == 0)
@@ -195,7 +195,7 @@ public class DemonsDetectedManager : MonoBehaviour
                     if (hintImage != null)
                     {
                         hintImage.gameObject.SetActive(false);
-                        Debug.Log("第三次失敗：強制關閉提示文字圖片，避免動畫衝突");
+                        //Debug.Log("第三次失敗：強制關閉提示文字圖片，避免動畫衝突");
                     }
                     
                     // 遊戲結束，隱藏UI元素
@@ -230,12 +230,12 @@ public class DemonsDetectedManager : MonoBehaviour
         // 防止遊戲啟動時意外觸發
         if (choseACard == 0 || choseOCard == 0 || choseRCard == 0 || !findDemons || !isDemonShown)
         {
-            Debug.LogWarning("OnStartDetected: 遊戲狀態不符合封印條件，忽略此次調用");
+            //Debug.LogWarning("OnStartDetected: 遊戲狀態不符合封印條件，忽略此次調用");
             return;
         }
         
         // 直接執行封印動作，使用之前在 OnShowDemon() 中儲存的偵測結果
-        Debug.Log($"OnStartDetected: 執行封印，偵測結果: {detectionResult}");
+        //Debug.Log($"OnStartDetected: 執行封印，偵測結果: {detectionResult}");
         WinDetected(detectionResult);
     }
 
@@ -253,6 +253,11 @@ public class DemonsDetectedManager : MonoBehaviour
         {
             // 成功的UI圖像已在 OnShowDemon() 中顯示，此處只執行封印動畫
             // 隱藏指定的UI元素，保留血量和設定按鈕
+
+            var WinNumber = PlayerPrefs.GetInt("WinIndex");
+            WinNumber++;
+            PlayerPrefs.SetInt("WinIndex", WinNumber);
+
             HideUIElementsOnStageEnd();
             
             audio.SetSEAudio(2);
@@ -273,8 +278,10 @@ public class DemonsDetectedManager : MonoBehaviour
             await Task.Delay(1000);
             FindObjectOfType<SceneTransition>().CallTransition();
             await Task.Delay(1000);
+            Debug.Log($"封印成功，進入結算畫面，當前勝利次數: {PlayerPrefs.GetInt("WinIndex")}");
             settlement.winPage.SetActive(true);
-            audio.SetPromptsAudio(3);
+            settlement.winPage.gameObject.GetComponent<WinPageDetected>().OnWinPageDetected(PlayerPrefs.GetInt("WinIndex"));
+            audio.SetPromptsAudio(audio.WinSEDetected());
             audio.SetSEAudio(0);
         }
         else
@@ -306,7 +313,7 @@ public class DemonsDetectedManager : MonoBehaviour
                 if (hintImage != null)
                 {
                     hintImage.gameObject.SetActive(false);
-                    Debug.Log("WinDetected失敗：強制關閉提示文字圖片，避免動畫衝突");
+                    //Debug.Log("WinDetected失敗：強制關閉提示文字圖片，避免動畫衝突");
                 }
                 
                 // 失敗且生命值為0，隱藏UI元素
@@ -530,12 +537,12 @@ public class DemonsDetectedManager : MonoBehaviour
         var fastUnlockButton = FindAnyObjectByType<FastUnlockButton>();
         if (fastUnlockButton != null)
         {
-            Debug.Log("DemonsDetectedManager: 找到 FastUnlockButton，重置為鎖定狀態");
+            //Debug.Log("DemonsDetectedManager: 找到 FastUnlockButton，重置為鎖定狀態");
             fastUnlockButton.ResetToLocked();
         }
         else
         {
-            Debug.LogWarning("DemonsDetectedManager: 找不到 FastUnlockButton 組件");
+            //Debug.LogWarning("DemonsDetectedManager: 找不到 FastUnlockButton 組件");
         }
     }
     
@@ -547,7 +554,7 @@ public class DemonsDetectedManager : MonoBehaviour
         {
             StopAllCoroutines();
             hintImage.gameObject.SetActive(false);
-            Debug.Log("階段性結束：強制隱藏提示文字圖片");
+            //Debug.Log("階段性結束：強制隱藏提示文字圖片");
         }
         
         // 隱藏指定的UI元素陣列中的所有元素
@@ -558,7 +565,7 @@ public class DemonsDetectedManager : MonoBehaviour
                 if (uiElementsToHideOnStageEnd[i] != null)
                 {
                     uiElementsToHideOnStageEnd[i].SetActive(false);
-                    Debug.Log($"階段性結束：隱藏UI元素 - {uiElementsToHideOnStageEnd[i].name}");
+                    //Debug.Log($"階段性結束：隱藏UI元素 - {uiElementsToHideOnStageEnd[i].name}");
                 }
             }
         }
@@ -567,16 +574,16 @@ public class DemonsDetectedManager : MonoBehaviour
         if (hpUI != null)
         {
             hpUI.SetActive(true);
-            Debug.Log("階段性結束：確保血量UI保持顯示");
+            //Debug.Log("階段性結束：確保血量UI保持顯示");
         }
         
         if (settingsUI != null)
         {
             settingsUI.SetActive(true);
-            Debug.Log("階段性結束：確保設定UI保持顯示");
+            //Debug.Log("階段性結束：確保設定UI保持顯示");
         }
         
-        Debug.Log("階段性結束UI隱藏處理完成");
+        //Debug.Log("階段性結束UI隱藏處理完成");
     }
     
     // 顯示血量歸零時的提示圖片
@@ -601,14 +608,14 @@ public class DemonsDetectedManager : MonoBehaviour
             {
                 // 這裡可以設定血量歸零提示圖片的位置
                 // 例如：rectTransform.anchoredPosition = new Vector2(0, 100);
-                Debug.Log("血量歸零提示圖片位置已調整");
+                //Debug.Log("血量歸零提示圖片位置已調整");
             }
             
-            Debug.Log("顯示血量歸零提示圖片，已停止所有動畫協程");
+            //Debug.Log("顯示血量歸零提示圖片，已停止所有動畫協程");
         }
         else
         {
-            Debug.LogWarning("找不到 gameOverimg 組件");
+            //Debug.LogWarning("找不到 gameOverimg 組件");
         }
     }
 }

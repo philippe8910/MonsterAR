@@ -12,6 +12,6 @@ public class AudioCtrl : MonoBehaviour
 
         audioSource.clip = audioClips[index];
         audioSource.Play();
-        Debug.Log($"播放音效為：{audioClips[index].name}");
+        //Debug.Log($"播放音效為：{audioClips[index].name}");
     }
 }

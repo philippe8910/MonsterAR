@@ -76,7 +76,7 @@ public class ARButtonController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("更換圖片失敗：索引超出範圍！");
+            //Debug.LogWarning("更換圖片失敗：索引超出範圍！");
         }
     }
 }

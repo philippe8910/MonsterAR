@@ -51,7 +51,7 @@ public class PaymentValidator : MonoBehaviour
         
         if (enableDebugMode)
         {
-            Debug.Log("PaymentValidator: 遊戲啟動付費驗證開始");
+            //Debug.Log("PaymentValidator: 遊戲啟動付費驗證開始");
         }
     }
     
@@ -66,7 +66,7 @@ public class PaymentValidator : MonoBehaviour
         
         if (enableDebugMode)
         {
-            Debug.Log("PaymentValidator: 正在驗證付費狀態...");
+            //Debug.Log("PaymentValidator: 正在驗證付費狀態...");
         }
         
         // 下載付費狀態
@@ -108,7 +108,7 @@ public class PaymentValidator : MonoBehaviour
         
         if (enableDebugMode)
         {
-            Debug.Log("PaymentValidator: 開始驗證付費狀態");
+            //Debug.Log("PaymentValidator: 開始驗證付費狀態");
         }
         
         // 下載JSON檔案
@@ -151,19 +151,19 @@ public class PaymentValidator : MonoBehaviour
                         
                         if (enableDebugMode)
                         {
-                            Debug.Log($"PaymentValidator: JSON下載成功，statusCode: {currentResponse.statusCode}, message: {currentResponse.message}");
+                            //Debug.Log($"PaymentValidator: JSON下載成功，statusCode: {currentResponse.statusCode}, message: {currentResponse.message}");
                         }
                         
                         yield break;
                     }
                     catch (Exception e)
                     {
-                        Debug.LogError($"PaymentValidator: JSON解析錯誤: {e.Message}");
+                        //Debug.LogError($"PaymentValidator: JSON解析錯誤: {e.Message}");
                     }
                 }
                 else
                 {
-                    Debug.LogWarning($"PaymentValidator: 下載失敗 (第{i + 1}次): {request.error}");
+                    //Debug.LogWarning($"PaymentValidator: 下載失敗 (第{i + 1}次): {request.error}");
                 }
                 
                 if (i < retryCount - 1)
@@ -187,7 +187,7 @@ public class PaymentValidator : MonoBehaviour
         
         if (enableDebugMode)
         {
-            Debug.Log($"PaymentValidator: 付費狀態已儲存 - StatusCode: {statusCode}");
+            //Debug.Log($"PaymentValidator: 付費狀態已儲存 - StatusCode: {statusCode}");
         }
         
         switch (statusCode)
@@ -224,7 +224,7 @@ public class PaymentValidator : MonoBehaviour
     {
         if (enableDebugMode)
         {
-            Debug.Log("PaymentValidator: 付費驗證完成，允許進入遊戲");
+            //Debug.Log("PaymentValidator: 付費驗證完成，允許進入遊戲");
         }
         
         // 尋找ReStartGame腳本來控制遊戲流程
@@ -233,7 +233,7 @@ public class PaymentValidator : MonoBehaviour
         {
             if (enableDebugMode)
             {
-                Debug.Log("PaymentValidator: 找到ReStartGame腳本，交由其控制遊戲流程");
+                //Debug.Log("PaymentValidator: 找到ReStartGame腳本，交由其控制遊戲流程");
             }
             restartScript.OnReset(); // 呼叫ReStartGame的OnReset方法
             // 讓ReStartGame繼續其正常流程
@@ -273,7 +273,7 @@ public class PaymentValidator : MonoBehaviour
 
             if (enableDebugMode)
             {
-                Debug.Log("PaymentValidator: 顯示付費要求對話框，5秒後退出");
+                //Debug.Log("PaymentValidator: 顯示付費要求對話框，5秒後退出");
             }
         }
     }
@@ -297,7 +297,7 @@ public class PaymentValidator : MonoBehaviour
 
             if (enableDebugMode)
             {
-                Debug.Log("PaymentValidator: 顯示網路錯誤對話框");
+                //Debug.Log("PaymentValidator: 顯示網路錯誤對話框");
             }
         }
     }
@@ -315,7 +315,7 @@ public class PaymentValidator : MonoBehaviour
                 // 已付費 - 正常遊戲，不做任何動作
                 if (enableDebugMode)
                 {
-                    Debug.Log("PaymentValidator: statusCode 1 - 已付費，正常使用");
+                    //Debug.Log("PaymentValidator: statusCode 1 - 已付費，正常使用");
                 }
                 break;
                 
@@ -358,7 +358,7 @@ public class PaymentValidator : MonoBehaviour
             
             if (enableDebugMode)
             {
-                Debug.Log("PaymentValidator: 顯示未付費浮水印");
+                //Debug.Log("PaymentValidator: 顯示未付費浮水印");
             }
         }
     }
@@ -382,7 +382,7 @@ public class PaymentValidator : MonoBehaviour
             
             if (enableDebugMode)
             {
-                Debug.Log("PaymentValidator: 顯示逾期對話框，準備退出");
+                //Debug.Log("PaymentValidator: 顯示逾期對話框，準備退出");
             }
         }
     }
@@ -410,7 +410,7 @@ public class PaymentValidator : MonoBehaviour
             
             if (enableDebugMode)
             {
-                Debug.Log("PaymentValidator: 顯示網路錯誤訊息");
+                //Debug.Log("PaymentValidator: 顯示網路錯誤訊息");
             }
         }
     }
@@ -424,7 +424,7 @@ public class PaymentValidator : MonoBehaviour
         
         if (enableDebugMode)
         {
-            Debug.Log("PaymentValidator: 應用程式即將退出");
+            //Debug.Log("PaymentValidator: 應用程式即將退出");
         }
         
         Application.Quit();

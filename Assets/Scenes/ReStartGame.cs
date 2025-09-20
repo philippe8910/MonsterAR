@@ -22,8 +22,8 @@ public class ReStartGame : MonoBehaviour
 
     private void SetAudio()
     {
-        Debug.Log($" BGM: {PlayerPrefs.GetInt("BGMSet")}");
-        Debug.Log($" SE: {PlayerPrefs.GetInt("SESet")}");
+        //Debug.Log($" BGM: {PlayerPrefs.GetInt("BGMSet")}");
+        //Debug.Log($" SE: {PlayerPrefs.GetInt("SESet")}");
 
         if (PlayerPrefs.GetInt("BGMSet") == 0)
         {
@@ -35,8 +35,8 @@ public class ReStartGame : MonoBehaviour
             PlayerPrefs.SetInt("SESet", 1);
         }
 
-        Debug.Log($" BGM: {PlayerPrefs.GetInt("BGMSet")}");
-        Debug.Log($" SE: {PlayerPrefs.GetInt("SESet")}");
+        //Debug.Log($" BGM: {PlayerPrefs.GetInt("BGMSet")}");
+        //Debug.Log($" SE: {PlayerPrefs.GetInt("SESet")}");
     }
 
     // Update is called once per frame

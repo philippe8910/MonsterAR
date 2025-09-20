@@ -39,11 +39,11 @@ public class MonsterGameManager : MonoBehaviour
     private IEnumerator RecognitionDelay()
     {
         OnRecognitionStarted.Invoke();
-        Debug.Log("🔍 辨識將在 3 秒後開始...");
+        //Debug.Log("🔍 辨識將在 3 秒後開始...");
         yield return new WaitForSeconds(3f);
         
         isRecognitionActive = true;
-        Debug.Log("✅ 辨識開始！");
+        //Debug.Log("✅ 辨識開始！");
         SpawnImageTargets(emotionCards);
         SpawnImageTargets(situationCards);
         SpawnImageTargets(monsterCards);
@@ -102,7 +102,7 @@ public class MonsterGameManager : MonoBehaviour
             if (!detectedGameObjects.Contains(target.gameObject)) // **避免重複加入**
             {
                 detectedGameObjects.Add(target.gameObject);
-                Debug.Log($"✅ 偵測到卡片: {detectedType}");
+                //Debug.Log($"✅ 偵測到卡片: {detectedType}");
             }
 
             CheckCombination();
@@ -112,7 +112,7 @@ public class MonsterGameManager : MonoBehaviour
     private EmotionType GetEmotionTypeFromTarget(ObserverBehaviour target)
     {
         string targetName = target.gameObject.name; // **🔴 確保取得正確的物件名稱**
-        Debug.Log($"🔍 嘗試查找 {targetName} 對應的 EmotionType");
+        //Debug.Log($"🔍 嘗試查找 {targetName} 對應的 EmotionType");
 
         foreach (var card in emotionCards)
         {
@@ -127,7 +127,7 @@ public class MonsterGameManager : MonoBehaviour
             if (card.imageTargetPrefab.name == targetName) return card.associatedEmotion;
         }
 
-        Debug.LogWarning($"⚠️ 未能找到 {targetName} 的 EmotionType");
+        //Debug.LogWarning($"⚠️ 未能找到 {targetName} 的 EmotionType");
         return EmotionType.Happy; // **預設回傳 Happy 避免錯誤**
     }
 
@@ -136,7 +136,7 @@ public class MonsterGameManager : MonoBehaviour
     if (!isRecognitionActive) return;
     if (detectedGameObjects.Count < 3) return;
 
-    Debug.Log("🔍 [檢查組合] 開始");
+    //Debug.Log("🔍 [檢查組合] 開始");
     isRecognitionActive = false;
     OnRecognitionCompleted.Invoke();
 
@@ -148,7 +148,7 @@ public class MonsterGameManager : MonoBehaviour
     foreach (var detectedObj in detectedGameObjects)
     {
         string detectedName = detectedObj.name;
-        Debug.Log($"🔍 [比對] 檢測到物件: {detectedName}");
+        //Debug.Log($"🔍 [比對] 檢測到物件: {detectedName}");
 
         // 從情緒卡片比對
         foreach (var card in emotionCards)
@@ -156,7 +156,7 @@ public class MonsterGameManager : MonoBehaviour
             if (card.imageTargetPrefab.name == detectedName)
             {
                 detectedEmotion = card.emotionType;
-                Debug.Log($"✅ 物件 {detectedName} 是 EmotionType: {detectedEmotion}");
+                //Debug.Log($"✅ 物件 {detectedName} 是 EmotionType: {detectedEmotion}");
             }
         }
 
@@ -166,7 +166,7 @@ public class MonsterGameManager : MonoBehaviour
             if (card.imageTargetPrefab.name == detectedName)
             {
                 detectedSituation = card.associatedEmotion;
-                Debug.Log($"✅ 物件 {detectedName} 是 SituationType (對應情緒): {detectedSituation}");
+                //Debug.Log($"✅ 物件 {detectedName} 是 SituationType (對應情緒): {detectedSituation}");
             }
         }
 
@@ -176,27 +176,27 @@ public class MonsterGameManager : MonoBehaviour
             if (card.imageTargetPrefab.name == detectedName)
             {
                 detectedMonster = card.associatedEmotion;
-                Debug.Log($"✅ 物件 {detectedName} 是 MonsterType (對應情緒): {detectedMonster}");
+                //Debug.Log($"✅ 物件 {detectedName} 是 MonsterType (對應情緒): {detectedMonster}");
             }
         }
     }
 
-    Debug.Log("🔍 [檢查組合] 情緒: " + detectedEmotion);
-    Debug.Log("🔍 [檢查組合] 情境: " + detectedSituation);
-    Debug.Log("🔍 [檢查組合] 怪獸: " + detectedMonster);
+    //Debug.Log("🔍 [檢查組合] 情緒: " + detectedEmotion);
+    //Debug.Log("🔍 [檢查組合] 情境: " + detectedSituation);
+    //Debug.Log("🔍 [檢查組合] 怪獸: " + detectedMonster);
 
     // 檢查是否三者匹配
     if (detectedEmotion != EmotionType.None &&
         detectedEmotion == detectedSituation &&
         detectedSituation == detectedMonster)
     {
-        Debug.Log("🎯 [成功] 組合正確！消滅怪獸！");
+        //Debug.Log("🎯 [成功] 組合正確！消滅怪獸！");
         OnRecognitionSuccess.Invoke();
         StartCoroutine(DestroyMonster(spawnedTargets[2]));
     }
     else
     {
-        Debug.Log("❌ [失敗] 組合錯誤！怪獸放大後消失！");
+        //Debug.Log("❌ [失敗] 組合錯誤！怪獸放大後消失！");
         OnRecognitionFailed.Invoke();
         StartCoroutine(EnlargeAndDisappear(spawnedTargets[2]));
     }

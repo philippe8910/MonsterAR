@@ -9,7 +9,7 @@ public class ReStartGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //OnReset();
+        OnReset();
     }
 
     public async void OnReset()

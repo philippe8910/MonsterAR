@@ -220,6 +220,8 @@ public class DemonsDetectedManager : MonoBehaviour
                     FadeInGameOverImage();
                     
                     StartCoroutine(GameOverSequence());
+                    
+                    Debug.Log("封印失敗，進入結算畫面");
                 }
             }
         }
@@ -337,6 +339,7 @@ public class DemonsDetectedManager : MonoBehaviour
                 await Task.Delay(3000);
                 FindObjectOfType<SceneTransition>().CallTransition();
                 await Task.Delay(1000);
+                
                 settlement.losePage.SetActive(true);
             }
             
@@ -506,7 +509,7 @@ public class DemonsDetectedManager : MonoBehaviour
 
     IEnumerator FadeImageCoroutine()
     {
-        float duration = 1f; // �H�X�һݬ���
+        float duration = 1f;
         float currentTime = 0f;
         Color color = gameOverimg.color;
         color.a = 0f;
@@ -527,6 +530,8 @@ public class DemonsDetectedManager : MonoBehaviour
         FindObjectOfType<SceneTransition>().CallTransition();
         yield return new WaitForSeconds(1f);
         settlement.losePage.SetActive(true);
+        FindAnyObjectByType<AudioManager>().SetPromptsAudio(8);
+
     }
     
     private IEnumerator ResetFastUnlockButtonDelayed()

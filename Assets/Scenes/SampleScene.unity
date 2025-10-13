@@ -14716,18 +14716,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863787473}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.058732778, w: 0.9982738}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.73484993, y: 0.73484993, z: 0.73484993}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 696320381}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 6.734}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -346.6, y: 143.4}
-  m_SizeDelta: {x: 90.9888, y: 85.6177}
+  m_AnchoredPosition: {x: -340.9, y: 139.8}
+  m_SizeDelta: {x: 84.427, y: 95.0864}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1863787475
 MonoBehaviour:
@@ -14775,7 +14775,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 493872726}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OnBackHome
+        m_MethodName: ResetIndex
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14805,7 +14805,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 46e3f88bc184cd340aaa7dfd4cea4188, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7369f0d91d2b67446a6942a4075c877d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

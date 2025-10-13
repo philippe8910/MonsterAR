@@ -274,6 +274,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void ResetIndex()
+    {
+        PlayerPrefs.SetInt("WinIndex", 0);
+        FindAnyObjectByType<AudioManager>().ButtonClickSound();
+    }
+
     public void OpenSetting()
     {
         settingPageObject.SetActive(true);

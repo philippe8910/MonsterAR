@@ -4303,6 +4303,7 @@ MonoBehaviour:
   UIctrl: {fileID: 493872726}
   showDemonButton: {fileID: 796138706}
   startDetected: {fileID: 1503331823}
+  lockBtn: {fileID: 0}
   detectedButtonTX: {fileID: 0}
   settlement: {fileID: 0}
   hintImage: {fileID: 142094179}
@@ -4984,7 +4985,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &881893853
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6239,6 +6240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetButton: {fileID: 1072914877}
   CardTypeIndex: 0
+  isFind: 0
   objectToActivate: {fileID: 1960081451}
   spriteVariants:
   - {fileID: 21300000, guid: 66daa59089c249e4cb9f44d8a6581035, type: 3}
@@ -8635,6 +8637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetButton: {fileID: 1610941245}
   CardTypeIndex: 0
+  isFind: 0
   objectToActivate: {fileID: 400798318}
   spriteVariants:
   - {fileID: 21300000, guid: 66daa59089c249e4cb9f44d8a6581035, type: 3}
@@ -9896,6 +9899,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetButton: {fileID: 1887157858}
   CardTypeIndex: 0
+  isFind: 0
   objectToActivate: {fileID: 1273434879}
   spriteVariants:
   - {fileID: 21300000, guid: 66daa59089c249e4cb9f44d8a6581035, type: 3}
